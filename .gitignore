@@ -1,0 +1,4 @@
+.DS_Store
+validation-logs/
+*.log
+.vscode/
