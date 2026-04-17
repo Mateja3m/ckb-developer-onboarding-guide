@@ -19,13 +19,11 @@ The following tools should be available before moving forward:
 - Git
 - `curl`
 
-`TODO: VALIDATE` recommended minimum versions for CKB onboarding.
-
 ## Steps
 
 1. Confirm you can open a terminal.
 
-   If you are new to development tooling, this is the application where you can type commands and see their output. On macOS and Linux, common options are Terminal or iTerm. `TODO: VALIDATE` Windows-specific guidance.
+   If you are new to development tooling, this is the application where you can type commands and see their output.
 
 2. Confirm you can browse official documentation.
 

@@ -26,8 +26,8 @@ This page does not install or configure a CKB node, RPC endpoint, or indexer.
    Run:
 
    ```bash
-   mkdir -p ~/ckb-onboarding-guide
-   cd ~/ckb-onboarding-guide
+   mkdir -p ~/ckb-test
+   cd ~/ckb-test
    ```
 
    Using a dedicated folder makes it easier to keep downloads, notes, and example files in one place.
