@@ -2,3 +2,4 @@
 validation-logs/
 *.log
 .vscode/
+docs/reports/
