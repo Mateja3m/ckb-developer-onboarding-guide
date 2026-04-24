@@ -71,14 +71,19 @@ This page does not install or configure a CKB node, RPC endpoint, or indexer.
    Run:
 
    ```bash
-   curl --head https://example.com
+   curl --head https://google.com
    ```
 
-   This is a simple connectivity check. Later onboarding steps may require downloading files or reaching public documentation. `TODO: VALIDATE` whether a different verification target is better for the final guide.
+   This is a simple connectivity check. Later onboarding steps may require downloading files or reaching public documentation.
+
+   How to verify:
+
+   - You receive HTTP response headers.
+   - A redirect response such as `HTTP/2 301` still counts as proof that the terminal can reach a normal HTTPS site.
 
 6. Stop here before moving into CKB-specific setup.
 
-   At this point, your local environment should be organized and ready. The next documents will eventually cover CKB-specific tooling once those steps are validated.
+   At this point, your local environment should be organized and ready. Continue next with the validated local path in [03. Quick Start](03-quick-start.md).
 
 ## Verification
 
@@ -108,7 +113,7 @@ Try creating the workspace somewhere inside your home directory, not in a restri
 
 ### HTTPS Request Fails
 
-This can happen because of firewall rules, proxy settings, VPN configuration, or temporary network issues.
+This can happen because of firewall rules, proxy settings, VPN configuration, temporary network issues, or a hostname-resolution problem with the exact target you tested.
 
 ### Skipping Local Organization
 

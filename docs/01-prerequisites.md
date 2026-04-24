@@ -90,7 +90,6 @@ At this stage, the expected result is simple:
 - `git --version` returns a version string
 - `curl --version` returns version and build information
 
-Exact version values may differ by machine. `TODO: VALIDATE` recommended version ranges for this project.
 
 ## Common Issues
 

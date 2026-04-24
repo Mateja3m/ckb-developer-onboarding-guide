@@ -16,18 +16,25 @@ Summarize the first real validation pass for local environment readiness and cap
   - `curl` `8.7.1`
 - The basic HTTPS connectivity check failed with:
   - `curl: (6) Could not resolve host: example.com`
+- A rerun on April 19, 2026 showed the same HTTPS connectivity failure:
+  - `curl: (6) Could not resolve host: example.com`
+- On April 20, 2026, a rerun against a real HTTPS target succeeded:
+  - `curl --head https://google.com`
+  - `HTTP/2 301`
 
 ## Interpretation
 
 - Local developer tooling appears ready for onboarding.
-- Network-dependent onboarding should not be treated as ready yet.
-- DNS resolution should be called out explicitly in the final environment validation flow.
+- Basic HTTPS connectivity is available in this environment when tested against a reachable real HTTPS target.
+- The repeated `example.com` failure should not be treated as proof that all network-dependent onboarding is blocked.
+- DNS resolution and target selection should still be called out explicitly in the final environment validation flow.
 
 ## Documentation Implications
 
 - The environment setup guide should keep a dedicated network validation step before any download or RPC-related work.
+- The guide should use a real HTTPS target that has been validated locally rather than a placeholder domain that produced misleading failure signals in this environment.
 - The guide should explicitly mention that `curl: (6) Could not resolve host` is a likely DNS or network-resolution problem, not necessarily a CKB-specific issue.
-- The guide should tell beginners to stop and resolve network issues before moving into node, RPC, or indexer setup.
+- The validation materials should distinguish between "target-specific failure" and "general HTTPS connectivity failure."
 
 ## Suggested Future Troubleshooting Entry
 
