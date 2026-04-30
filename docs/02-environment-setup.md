@@ -83,7 +83,7 @@ This page does not install or configure a CKB node, RPC endpoint, or indexer.
 
 6. Stop here before moving into CKB-specific setup.
 
-   At this point, your local environment should be organized and ready. Continue next with the validated local path in [03. Quick Start](03-quick-start.md).
+   At this point, your local environment should be organized and ready. Continue next with [03. CKB Overview](03-quick-start.md).
 
 ## Verification
 

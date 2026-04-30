@@ -26,7 +26,7 @@ No prior CKB experience is assumed.
 
 3. Follow the documents in sequence.
 
-   Start with prerequisites, then environment setup, then the quick-start, node, RPC, and configuration pages. Later sections that still say `TODO: VALIDATE` remain planned structure rather than finished onboarding guidance, and later-phase placeholders may include a target milestone inline.
+   Start with prerequisites, then environment setup, then the CKB overview, node, RPC, and configuration pages. Later sections that still say `TODO: VALIDATE` remain planned structure rather than finished onboarding guidance, and later-phase placeholders may include a target milestone inline.
 
 4. Treat placeholders as planned structure, not finished instructions.
 
@@ -52,7 +52,8 @@ After reading this page, you should understand that:
 
 - this is a beginner-first onboarding repository
 - this repository is designed as an execution-focused onboarding path, not just a reference
-- the current Milestone 1 draft now includes prerequisites, environment setup, a validated quick start, node setup, RPC setup, and minimal configuration guidance
+- Milestone 1 is complete as the documentation foundation
+- Milestone 2 has started with the first CKB-specific overview, node setup, RPC basics, and local verification guidance
 - later sections outside that scope still need validation before they become full instructions
 
 ## Common Issues

@@ -1,167 +1,174 @@
-# 05. RPC Setup
+# 05. RPC Basics
 
 ## Goal
 
-Reach a first successful CKB JSON-RPC response and understand what counts as success for Milestone 1.
+Understand what RPC means in CKB development, how local and public RPC access differ, and how to interpret a first successful health-check response.
 
 ## Requirements
 
-Before following this page:
+Before using this page:
 
-- complete [04. CKB Node Setup](04-ckb-node-setup.md)
-- keep the local node process running in a separate terminal
-- make sure `curl` works in the terminal where you will send the request
+- complete [03. CKB Overview](03-quick-start.md)
+- decide whether you are using the repository's local-node path or a separately verified remote endpoint
+- keep the local node running if you are following the validated local flow
 
-This page is limited to the first validated local RPC interaction recorded in this repository.
+This page includes exact request examples only where the repository already contains direct validation evidence.
 
-- Required: a running local node started through `offckb node`
-- Validated: POST requests to `http://localhost:8114` and `http://127.0.0.1:28114` using `get_tip_block_number`
-- Validated: a browser-style or GET-style check is not a valid RPC verification step
-- Not yet validated: public RPC providers, additional local ports beyond the recorded flow, or additional RPC methods for onboarding
+## What RPC Means
 
-## Validated Facts From This Repository
+RPC stands for Remote Procedure Call.
 
-The Week 1 validation materials confirmed the following:
+In practical CKB development, RPC is the interface a script, tool, or developer uses to ask a node for information or submit a request. Instead of clicking through a graphical interface, you send a structured request and read a structured response.
 
-- the first successful request used `http://localhost:8114`
-- the request method was `get_tip_block_number`
-- the validated response was `{"jsonrpc":"2.0","result":"0x0","id":2}`
-- a later rerun of the same request returned `{"jsonrpc":"2.0","result":"0x2e","id":2}`
-- a restart validation on April 20, 2026 showed the same request also succeeding on `http://127.0.0.1:28114` with `{"jsonrpc":"2.0","result":"0xa","id":2}`
-- opening the endpoint with the wrong HTTP method produced `Used HTTP Method is not allowed. POST or OPTIONS is required`
-- `lsof` validation on April 20, 2026 showed `ckb` listening on `*:8114`
-- `lsof` validation on April 20, 2026 showed `node` listening on `*:28114`
+## Why RPC Matters In CKB Development
 
-The repository also recorded that `offckb node` reported `http://127.0.0.1:28114` during startup. Both that endpoint and `http://localhost:8114` have now returned valid JSON-RPC responses in local validation. On the validation machine, `lsof` also showed `ckb` listening on `8114` and `node` listening on `28114`, which strongly suggests a proxy relationship. The full implementation details are still not documented here, so keep recording the exact endpoint you used.
+RPC matters because it is one of the first concrete proof points that your setup is working.
 
-## Steps
+If you can send a valid request and receive a valid response, you know at least one important part of the chain-access path is alive:
 
-1. Confirm the node is still running.
+- your terminal command ran
+- your endpoint was reachable
+- your request format was accepted
+- the node or proxy returned real JSON-RPC data
 
-   Why this matters:
+That does not prove every later workflow is ready, but it is an important early success signal.
 
-   - The RPC request depends on a live local environment.
+## Local RPC Versus Public RPC
 
-   How to verify:
+Local RPC usually means:
 
-   - The terminal where you launched `offckb node` is still active.
-   - You have not stopped or cleaned the node since startup.
+- you started the node or a local proxy on your own machine
+- you control the local process lifecycle
+- you can inspect startup logs directly
+- you can test a local devnet flow without relying on a shared service
 
-2. Use the exact validated request format.
+Public or shared RPC usually means:
 
-   Run this command in a second terminal:
+- someone else operates the endpoint
+- you depend on the remote service being reachable and suitable for your tutorial or workflow
+- you may be able to read data without running local infrastructure
+- you have less visibility into the underlying process and local configuration
 
-   ```bash
-   echo '{
-       "id": 2,
-       "jsonrpc": "2.0",
-       "method": "get_tip_block_number",
-       "params": []
-   }' \
-   | tr -d '\n' \
-   | curl -H 'content-type: application/json' -d @- \
-   http://localhost:8114
-   ```
+This repository currently validates the local path. It does not yet publish a validated public RPC provider flow.
 
-   Why this matters:
+## Basic Health-Check Concept
 
-   - This request was already captured successfully in the repository's validation log.
-   - Using the validated request reduces ambiguity while Milestone 1 is still focused on first success.
+A health check in this guide means sending a simple RPC request that is easy to interpret.
 
-   How to verify:
+The repository validation notes already used `get_tip_block_number` for that purpose. It is useful because:
 
-   - The command returns a JSON object.
-   - The response includes `"jsonrpc":"2.0"` and `"id":2`.
-   - The response includes a `"result"` field with a hex string.
+- it is simple
+- it returns a direct value
+- it helps confirm the endpoint is answering JSON-RPC requests at all
 
-3. Interpret the response as an RPC success check, not as a full environment diagnosis.
+## Repository-Validated Local Example
 
-   One validated success response was:
+If you are following the local flow already validated in this repository, run:
 
-   ```json
-   {"jsonrpc":"2.0","result":"0x0","id":2}
-   ```
+```bash
+echo '{
+    "id": 2,
+    "jsonrpc": "2.0",
+    "method": "get_tip_block_number",
+    "params": []
+}' \
+| tr -d '\n' \
+| curl -H 'content-type: application/json' -d @- \
+http://localhost:8114
+```
 
-   A later validated rerun returned:
+The repository validation notes also recorded the same JSON-RPC POST request succeeding against `http://127.0.0.1:28114` on the validation machine. The guide still treats `http://localhost:8114` as the primary example because that request already existed in the earlier repo flow and is easier to keep consistent.
 
-   ```json
-   {"jsonrpc":"2.0","result":"0x2e","id":2}
-   ```
+If you want to document a public or shared RPC example later:
 
-   A later validated request to the startup-reported endpoint returned:
+- `TODO: verify against official CKB documentation before finalizing.` Exact endpoint format and request example for a public RPC onboarding path.
 
-   ```json
-   {"jsonrpc":"2.0","result":"0xa","id":2}
-   ```
+## What A Successful Response Means
 
-   What this means for Milestone 1:
+A successful response usually means:
 
-   - The request reached the local RPC service.
-   - The service accepted the JSON-RPC payload.
-   - The service returned a valid JSON-RPC response.
+- the request reached a listening endpoint
+- the endpoint accepted your JSON-RPC structure
+- the node or proxy returned a valid JSON response
 
-   What this does not prove by itself:
+The repository validation notes recorded successful responses such as:
 
-   - that every local port is interchangeable
-   - that the node is fully progressed beyond its initial chain state
-   - that broader developer workflows are already validated
+- `{"jsonrpc":"2.0","result":"0x0","id":2}`
+- `{"jsonrpc":"2.0","result":"0x2e","id":2}`
+- `{"jsonrpc":"2.0","result":"0xa","id":2}`
 
-   How to verify:
+For this guide, those different block numbers all count as success because the important signal is the valid request-and-response cycle.
 
-   - You can explain why the response is considered valid even if the block number is low.
+## What Failure Usually Means
 
-4. Avoid the most common false-negative check.
+Failure usually falls into one of these categories:
 
-   Do not verify the RPC endpoint by opening it in a browser and judging the result from a GET request.
+- the endpoint is not running or not reachable
+- the request used the wrong HTTP method
+- the JSON-RPC payload was malformed
+- the wrong port or endpoint was tested
+- a local process stopped earlier than expected
 
-   The validation pass recorded this response when the endpoint was accessed the wrong way:
+The repository validation notes recorded this response when the endpoint was accessed with the wrong method:
 
-   ```text
-   Used HTTP Method is not allowed. POST or OPTIONS is required
-   ```
+```text
+Used HTTP Method is not allowed. POST or OPTIONS is required
+```
 
-   How to verify:
+That message points to a request-method problem, not automatically to a broken CKB environment.
 
-   - You understand that this message points to an HTTP-method mismatch, not automatically to a broken node.
+## Conceptual Examples
 
-5. Record the exact endpoint you used.
+Conceptually, early RPC usage often looks like one of these patterns:
 
-   Why this matters:
+- a health check asks for the current tip block number
+- a tool asks for chain state before doing deeper work
+- a developer compares whether the same request works locally but fails against another endpoint
 
-   - The repository already contains evidence that multiple local-looking endpoints can appear during onboarding.
-   - Recording the exact endpoint helps avoid later confusion when comparing your notes to startup logs.
+This guide keeps those examples conceptual unless the repository already contains the exact request and response being discussed.
 
-   How to verify:
+## Milestone 2 Local Checkpoint
 
-   - Your notes include the full request command and full response.
+Before moving on, confirm these points from the existing onboarding flow:
+
+- Node.js and npm still work in the shell you are using
+- Git still works in that environment
+- terminal basics are no longer a blocker, including keeping the node terminal separate from the RPC terminal when needed
+- the local node is still running if you chose the local-node path
+- you already reached at least one successful RPC response with the validated request
+- you wrote down which endpoint actually worked on your machine
+- you can still follow official documentation carefully when this repository marks a detail for later verification
+- you can roughly classify a failure as a tool issue, shell issue, network issue, endpoint issue, request-method issue, or response-interpretation issue
+
+If you need to rerun the tool checks, use the exact commands already listed in the prerequisites page. If you need to rerun the RPC health check, use the validated `get_tip_block_number` request shown above instead of inventing a new test.
 
 ## Verification
 
-You have completed this page if:
+You are ready to continue if:
 
-- you sent a POST request with a JSON-RPC payload
-- the request returned a valid JSON-RPC response
-- you can distinguish between a valid low block number and a transport failure
-- you understand that browser access is not the correct RPC validation method here
+- you can explain what RPC is in plain language
+- you understand why a valid JSON response counts as an early success signal
+- you can describe the difference between local RPC and public RPC
+- you know that a low block number is not, by itself, a failure
 
 ## Expected Output
 
 At the end of this page, you should have:
 
-- one recorded successful JSON-RPC request
-- a clear success condition for Milestone 1
-- written evidence of which endpoint and method you actually used
+- one clear mental model for what the RPC layer does
+- one validated local health-check request if you followed the repository's local path
+- a short explanation of what success and failure usually mean
 
 ## Common Issues
 
-### Using The Wrong HTTP Method
+### Using A Browser As The RPC Test
 
-If you try to test the endpoint in a browser, you may see `Used HTTP Method is not allowed. POST or OPTIONS is required`. In the repository's validation work, that was an expected misuse case, not proof that the RPC layer was unavailable.
+A browser-style GET request is not the same as a JSON-RPC POST request. The repository validation notes explicitly recorded the method-mismatch error for this misuse case.
 
-### Treating `0x0` As Automatic Failure
+### Treating Any Nonzero Or Low Result As The Main Signal
 
-The validated first response returned `0x0`. A later rerun returned `0x2e`. Both count as success because the JSON-RPC request and response cycle worked correctly.
+For the first health check, the key signal is a valid JSON-RPC response. The exact block number can vary with local chain state and timing.
 
-### Guessing Which Local Port To Use
+### Assuming Local And Public RPC Behave The Same Way
 
-This repository has not yet published a full endpoint-routing explanation. Local validation now suggests `8114` is served by `ckb` while `28114` is served by `node`, and both accepted the same JSON-RPC POST request on the validation machine. You should still record which endpoint you used instead of assuming every local port behaves the same way.
+They can support similar request formats, but they are not the same onboarding environment. Local RPC gives you process visibility and reproducibility. Public RPC shifts some of that control to an external service.

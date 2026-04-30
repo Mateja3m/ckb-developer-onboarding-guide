@@ -1,148 +1,129 @@
-# 03. Quick Start
+# 03. CKB Overview
 
 ## Goal
 
-Reach a first successful CKB JSON-RPC interaction through the shortest validated local path in this repository.
+Understand the basic CKB concepts that matter before choosing between a local node, a public RPC endpoint, or later tooling.
 
 ## Requirements
 
-Before following this page, complete:
+Before using this page, complete:
 
+- [00. Overview](00-overview.md)
 - [01. Prerequisites](01-prerequisites.md)
 - [02. Environment Setup](02-environment-setup.md)
 
-This quick start is intentionally narrow.
+This page begins the first Milestone 2 shift from generic onboarding foundations into CKB-specific onboarding context.
 
-- Required: a working terminal, npm, and `curl`
-- Required: enough network access to install `@offckb/cli` and allow the first `offckb node` run to download the CKB binary if it is missing
-- Validated: the flow below was recorded in this repository's Week 1 validation logs
-- Not yet validated: alternative installation paths, custom node configuration, or non-devnet onboarding flows
+## What CKB Is
 
-If your environment still has unresolved DNS or connectivity problems, stop here and fix those first.
+CKB stands for Common Knowledge Base.
 
-## Steps
+In practical onboarding terms, CKB is the blockchain layer a developer interacts with when reading chain data, checking network state, or sending JSON-RPC requests to a node.
 
-1. Install the OffCKB CLI.
+For this guide, the important point is simple:
 
-   Run:
+- CKB is the system you are trying to talk to
+- the node and RPC layers are how you talk to it during early setup
 
-   ```bash
-   npm install -g @offckb/cli
-   ```
+## What Nervos Is
 
-   This is the exact command that succeeded during the recorded validation pass.
+Nervos is the broader ecosystem around CKB.
 
-   How to verify:
+In this repository, you do not need a deep ecosystem map before you start. What matters first is that CKB-specific tooling, node setup, and RPC usage sit within the Nervos ecosystem.
 
-   - The command exits successfully.
-   - npm reports that packages were added.
-   - You do not see a package-resolution or permission failure.
+## What Role A CKB Node Plays
 
-2. Start the local devnet node.
+A CKB node is the software process that participates in the network and exposes data or actions through an interface.
 
-   Run:
+For a beginner, the node usually matters for four reasons:
 
-   ```bash
-   offckb node
-   ```
+- it runs the local chain process when you are doing local development
+- it stores or serves the chain state your tools query
+- it exposes RPC methods that scripts, wallets, or test commands can call
+- it gives you a concrete success signal when local setup is working
 
-   Keep this terminal open. On the first run, the tool may report that the CKB binary is missing, then download it automatically and continue.
+## What RPC Is
 
-   Expected pattern:
+RPC stands for Remote Procedure Call.
 
-   - You may see an early `No such file or directory` line for the missing binary.
-   - You may then see download and install messages for CKB.
-   - The success signal recorded in validation was:
-     - `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
+In practice, RPC is the request-and-response interface your tools use to ask a node for information or to submit actions. In this guide, RPC matters because it gives you a simple way to test whether your local or remote CKB access is actually working.
 
-   How to verify:
+## Why Developers May Need A Local Node Or RPC Endpoint
 
-   - The command keeps running instead of returning immediately.
-   - You eventually see the local devnet RPC proxy message.
-   - You do not stop at the first alarming-looking line if later lines show recovery and startup.
+You do not always need the same setup for every task.
 
-3. Open a second terminal for the RPC check.
+Use a local node when:
 
-   Leave the node running in the first terminal.
+- you need a controlled local development environment
+- you want to reproduce onboarding steps without depending on a shared service
+- you need a beginner-safe place to test whether node startup and RPC behavior make sense together
 
-   Why this matters:
+Use a public or shared RPC endpoint when:
 
-   - The node process needs to stay active while you send the RPC request.
-   - Using a second terminal avoids accidentally stopping the node while testing.
+- you only need to read chain data for a simple experiment
+- a tutorial or tool explicitly supports that remote endpoint
+- you are not yet validating local node management
 
-   How to verify:
+The guide treats these as different onboarding choices, not as interchangeable defaults.
 
-   - The first terminal is still showing the running node process.
-   - The second terminal opens in the shell normally.
+## What This Guide Covers
 
-4. Send the first validated JSON-RPC request.
+At this stage, the guide covers:
 
-   Run:
+- the CKB-specific concepts a beginner needs before deeper setup
+- how to think about local node setup versus RPC-only access
+- a first validated local node and RPC path already recorded in this repository
+- a beginner checklist for verifying whether the environment is ready
 
-   ```bash
-   echo '{
-       "id": 2,
-       "jsonrpc": "2.0",
-       "method": "get_tip_block_number",
-       "params": []
-   }' \
-   | tr -d '\n' \
-   | curl -H 'content-type: application/json' -d @- \
-   http://localhost:8114
-   ```
+## What This Guide Does Not Cover Yet
 
-   This is the exact request captured in the Week 1 validation log.
+This guide does not yet provide complete instructions for:
 
-   How to verify:
+- advanced node operations
+- production deployment
+- indexer setup
+- contract development workflows
+- a fully validated public RPC provider comparison
 
-   - You receive a JSON-RPC response instead of a browser page or connection error.
-   - The response contains `"jsonrpc":"2.0"` and a `"result"` field.
-   - The validation logs already captured successful responses with `0x0` and `0x2e`. Treat those as confirmed success cases, not as the only possible successful block numbers.
+Where the repository does not already contain validated evidence for an exact command or path, the later documents use `TODO: verify against official CKB documentation before finalizing.`
 
-5. Interpret the result correctly.
+## How To Use The Next Pages
 
-   For this onboarding guide, success means the request was accepted and a valid JSON-RPC response came back from the local CKB environment.
+Continue in this order:
 
-   Important notes:
-
-   - A low block number such as `0x0` can still be a successful first response.
-   - A later request may return a higher hex block number such as `0x2e` if the local chain has progressed further.
-   - If your shell prints a trailing `%`, that may be shell prompt formatting rather than part of the JSON.
-   - Do not test this RPC step by opening the endpoint in a browser. The validation pass recorded `Used HTTP Method is not allowed. POST or OPTIONS is required` when the endpoint was accessed the wrong way.
+1. [04. CKB Node Setup](04-ckb-node-setup.md) if you want the local-node path.
+2. [05. RPC Basics](05-rpc-setup.md) to understand the first RPC checks and what success means.
+3. [07. Configuration Setup](07-configuration-setup.md) to understand the minimal configuration details already validated in this repository.
 
 ## Verification
 
-You have completed this quick start if:
+You are ready to continue if you can explain:
 
-- `npm install -g @offckb/cli` succeeded
-- `offckb node` stayed running and showed a local startup signal
-- the JSON-RPC request returned a valid JSON response
-- you understand that first success means "working request and response", not "fully synced development environment"
+- what CKB is at a beginner level
+- what a node does in the onboarding flow
+- what RPC is used for
+- why a local node is useful in some cases but not required in every case
+- which parts of the broader CKB workflow this repository still does not document yet
 
 ## Expected Output
 
-At the end of this page, you should have:
+After reading this page, you should know:
 
-- the OffCKB CLI installed locally
-- a running local devnet node process
-- one successful JSON-RPC request recorded against that local environment
-
-For the detailed explanation of each step, continue with:
-
-- [04. CKB Node Setup](04-ckb-node-setup.md)
-- [05. RPC Setup](05-rpc-setup.md)
-- [07. Configuration Setup](07-configuration-setup.md)
+- what system you are trying to access
+- what role the node and RPC layers play in that access
+- why the next setup choices are practical, not just theoretical
+- where the current CKB-specific onboarding boundary stops
 
 ## Common Issues
 
-### Treating The First Startup Message As A Final Failure
+### Treating CKB, Nervos, Node, And RPC As The Same Thing
 
-During validation, `offckb node` first reported a missing binary and then recovered by downloading the required CKB version automatically.
+They are related, but they are not identical. CKB is the blockchain layer, Nervos is the broader ecosystem, a node is the running software process, and RPC is the interface used to communicate with that process.
 
-### Mixing Up Local Endpoints
+### Assuming A Local Node Is Always Required
 
-The Week 1 validation materials show both `127.0.0.1:28114` and `localhost:8114`. This guide only treats the exact validated request flow as confirmed. Do not substitute ports or endpoints casually.
+Some learning steps only need RPC access. The local-node path is useful because it gives beginners a controlled environment, not because every CKB task requires local infrastructure immediately.
 
-### Testing RPC In A Browser
+### Expecting This Page To Replace Official Technical References
 
-The RPC check requires a POST request with a JSON-RPC payload. A browser visit or plain GET request is not a valid verification method for this step.
+This page is an onboarding explanation layer. Official documentation remains the source of truth for exact product, network, and command details that are not already validated in this repository.

@@ -2,41 +2,72 @@
 
 ## Goal
 
-Install the validated onboarding CLI, start a local CKB devnet node, and recognize the difference between expected startup noise and an actual blocker.
+Decide whether you need a local CKB node for early development, then follow the repository's validated local-node path without pretending unverified setup variants are already complete.
 
 ## Requirements
 
-Before following this page, complete:
+Before using this page, complete:
 
 - [01. Prerequisites](01-prerequisites.md)
 - [02. Environment Setup](02-environment-setup.md)
+- [03. CKB Overview](03-quick-start.md)
 
-For Milestone 1, this page is intentionally limited to the validated local devnet path captured in this repository.
+This page stays conservative on purpose.
 
-- Required: npm must work in your current shell
-- Required: your machine must be able to download packages and, on first run, any missing CKB binary needed by `offckb node`
-- Validated: `npm install -g @offckb/cli`, `offckb node`, and `offckb clean`
-- Validated: `offckb node -b <actual-binary-path>` with the discovered local CKB binary path
-- Not yet validated: manual CKB binary installation, non-devnet setups, or platform-specific background-service setups
+- It uses exact commands only where the repository already contains validation evidence.
+- It does not claim that every CKB installation path has been tested here.
+- It keeps official documentation as the source of truth for commands or options not already validated locally.
 
-## Validated Facts From This Repository
+## When A Local Node Is Needed
 
-The Week 1 validation materials confirmed the following:
+A local node is usually the better choice when:
+
+- you want a self-contained beginner environment
+- you need to confirm that node startup and RPC behavior work together on your own machine
+- you are validating a local devnet workflow instead of only reading remote chain data
+- you want to reproduce onboarding steps without depending on a third-party endpoint
+
+## When A Public Or Shared RPC Endpoint May Be Enough
+
+A local node may not be necessary when:
+
+- you only need to read chain data for a simple experiment
+- the tutorial you are following clearly supports a remote RPC endpoint
+- you are not yet testing local process management, local chain state, or devnet behavior
+
+This guide does not yet document a fully validated public RPC path. If you choose that route, verify the exact endpoint and onboarding steps against official CKB documentation before treating it as part of this repository's validated flow.
+
+## What Is Already Validated In This Repository
+
+The local validation notes in this repository already confirmed:
 
 - `npm install -g @offckb/cli` succeeded
-- `offckb node` auto-downloaded CKB `0.205.0` when the binary was missing on first run
-- the validated startup signal included `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
-- `offckb clean` succeeded with `Chain data cleaned.`
-- `offckb node --help` confirms the following local options exist:
-  - `--network <network>`
-  - `--binary-path <binaryPath>`
-- running `offckb node -b "$ACTUAL_CKB_BIN"` with the discovered local binary path succeeded and showed the same startup signal
+- `offckb --help` exposed the expected CLI surface
+- `offckb node` started a local devnet flow
+- on first run, `offckb node` auto-downloaded a missing CKB binary on the validation machine
+- the startup output reported `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
+- `offckb clean` succeeded when used deliberately as cleanup
 
-These are validated observations from this repository, not a promise that every machine will display identical version numbers or startup timing.
+These are repository-validated observations, not a blanket claim about every operating system or every CKB setup path.
 
-## Steps
+## High-Level Preparation
 
-1. Install the OffCKB CLI.
+Before you run the local-node path, confirm that:
+
+- Node.js and npm work in your shell
+- package installation from npm is available on your machine
+- you have enough network access for the first tool download path used by this repository
+- you are ready to keep one terminal open for the running node process
+
+Before finalizing or publishing broader installation guidance, verify the following against official CKB documentation:
+
+- `TODO: verify against official CKB documentation before finalizing.` Recommended beginner installation path outside the specific OffCKB flow already validated here.
+- `TODO: verify against official CKB documentation before finalizing.` Supported operating-system notes that should appear in a public-facing setup guide.
+- `TODO: verify against official CKB documentation before finalizing.` Whether any newer recommended local setup flow should replace or supplement the current repository-validated path.
+
+## Repository-Validated Local Path
+
+1. Install the onboarding CLI already validated in this repository.
 
    Run:
 
@@ -44,16 +75,12 @@ These are validated observations from this repository, not a promise that every 
    npm install -g @offckb/cli
    ```
 
-   Why this matters:
+   What success looks like:
 
-   - This command provides the `offckb` entry point used by the validated onboarding flow.
+   - npm exits successfully
+   - the install completes without permission or package-resolution failure
 
-   How to verify:
-
-   - npm exits successfully.
-   - You do not see package-resolution, permission, or network errors.
-
-2. Confirm the CLI is available in your shell.
+2. Confirm the CLI is available in your current shell.
 
    Run:
 
@@ -61,16 +88,12 @@ These are validated observations from this repository, not a promise that every 
    offckb --help
    ```
 
-   Why this matters:
+   What success looks like:
 
-   - This confirms the installation completed in a way your current terminal session can actually use.
+   - help output appears
+   - the command list includes `node`
 
-   How to verify:
-
-   - You see usage information for `offckb`.
-   - The command list includes `node` and `clean`.
-
-3. Start the local devnet node.
+3. Start the local node path already recorded in the validation notes.
 
    Run:
 
@@ -78,42 +101,22 @@ These are validated observations from this repository, not a promise that every 
    offckb node
    ```
 
-   Why this matters:
+   What success looks like:
 
-   - This is the validated first-run path in the repository.
-   - Milestone 1 is focused on reaching a working local node and first RPC success, not on custom node management.
+   - the process keeps running instead of exiting immediately
+   - the startup flow reaches a message containing `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
 
-   Expected pattern on first run:
+   Important beginner note:
 
-   - The tool may first print a missing-binary line.
-   - It may then download and install the CKB binary automatically.
-   - It may print a warning-style log before the final startup signal.
+   - the validation notes show that the first run can print an error-looking missing-binary message before recovering and downloading the required CKB binary
 
-   The exact first-run validation output included all of the following patterns:
-
-   - a missing-binary message
-   - a download of CKB `0.205.0`
-   - a warning log from `ckb_network::network`
-   - `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
-
-   How to verify:
-
-   - The command continues running after startup instead of returning immediately.
-   - You eventually see the local devnet RPC proxy message.
-   - You do not stop at the first warning-like line if the process continues and reaches the startup signal.
-
-4. Keep the node terminal open.
+4. Keep that terminal open while you move to RPC checks.
 
    Why this matters:
 
-   - The later RPC step depends on the node process still running.
+   - the next page depends on the node process still being active
 
-   How to verify:
-
-   - Your terminal still shows the running process.
-   - You can open a second terminal without stopping the first one.
-
-5. Use cleanup only when you intentionally want a fresh devnet chain state.
+5. Use cleanup only when you intentionally want a fresh local state.
 
    Run:
 
@@ -121,46 +124,44 @@ These are validated observations from this repository, not a promise that every 
    offckb clean
    ```
 
-   The local help text says this command cleans the devnet data and that you need to stop the running chain first.
+   Use this only after stopping the running local chain. The repository validation notes recorded `Chain data cleaned.` as the success signal for this command.
 
-   Why this matters:
+## Common Beginner Mistakes
 
-   - Cleanup can be useful for repeatable validation passes.
-   - It is not required for a normal first success path.
+- assuming a public RPC endpoint and a local node serve the same onboarding purpose
+- stopping the node terminal before running the RPC check
+- treating the first warning-style startup line as the final outcome
+- changing ports or options before reaching one known-good baseline
+- copying commands from memory instead of from the validated notes or official docs
 
-   How to verify:
+## Verification Checklist
 
-   - The command returns `Chain data cleaned.`
+You are ready to continue if:
 
-## Verification
-
-You are ready to continue to RPC setup if:
-
+- you know whether you are choosing a local node path or an RPC-only path
+- `npm install -g @offckb/cli` succeeded on your machine if you chose the validated local path
 - `offckb --help` works in your shell
 - `offckb node` reaches a stable running state
-- you can identify the startup signal instead of relying on guesswork
-- you understand that `offckb clean` is optional and should be used deliberately
+- you can identify the startup signal instead of guessing from partial logs
 
 ## Expected Output
 
 At the end of this page, you should have:
 
-- a working `offckb` CLI in your shell
-- a running local devnet node started through the validated onboarding flow
-- a clear record of the startup messages that appeared on your machine
-
-If your output differs, record the exact command and output in a validation log before changing anything from memory.
+- a clear reason for using a local node or not using one yet
+- one working local-node startup path if you followed the validated repository flow
+- a short written record of the startup message and any unusual first-run behavior
 
 ## Common Issues
 
 ### Early Missing-Binary Message
 
-The validation pass showed that `offckb node` can begin with what looks like a fatal missing-file error and then recover automatically by downloading the required CKB binary.
+The validation notes show that the first local run can begin with a missing-file style message before recovering automatically. Do not assume the first alarming line is the final result.
 
-### Warning-Looking Startup Logs
+### Port Confusion During Startup
 
-The validated startup output included a warning log before the node reported the local RPC proxy. Do not treat every warning-style line as a hard failure without checking whether the process continued to a startup signal.
+The startup output recorded in this repository mentions `127.0.0.1:28114`. Later RPC checks in the repository also use `localhost:8114`. The next page explains how to interpret that carefully without assuming both values mean the same thing in every context.
 
-### Assuming The Startup Port Explains Every Later RPC Step
+### Treating This Page As Full Installation Documentation
 
-The node startup log reported `127.0.0.1:28114`, while the first validated RPC request used `localhost:8114`. This repository does not yet document the full internal routing relationship between those endpoints, so follow the validated request flow exactly instead of guessing.
+This page documents the first repository-validated onboarding path. It does not yet replace official CKB installation references for broader setups, alternate networks, or production-oriented node operation.

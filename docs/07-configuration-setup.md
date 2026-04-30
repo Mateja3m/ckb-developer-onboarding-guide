@@ -9,7 +9,7 @@ Explain the minimum configuration awareness a beginner needs for Milestone 1 wit
 Before using this page:
 
 - complete [04. CKB Node Setup](04-ckb-node-setup.md)
-- complete [05. RPC Setup](05-rpc-setup.md)
+- complete [05. RPC Basics](05-rpc-setup.md)
 
 This page is intentionally conservative.
 
