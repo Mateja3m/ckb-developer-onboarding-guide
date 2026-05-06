@@ -26,11 +26,11 @@ No prior CKB experience is assumed.
 
 3. Follow the documents in sequence.
 
-   Start with prerequisites, then environment setup, then the CKB overview, node, RPC, and configuration pages. Later sections that still say `TODO: VALIDATE` remain planned structure rather than finished onboarding guidance, and later-phase placeholders may include a target milestone inline.
+   Start with prerequisites, then environment setup, then the CKB overview, node, RPC, indexer, configuration, workflow, troubleshooting, AI-assisted debugging, and conceptual support pages. Where a section includes a TODO note, treat that note as a validation boundary rather than as a missing section.
 
-4. Treat placeholders as planned structure, not finished instructions.
+4. Treat TODO notes as scope boundaries, not as final command approval.
 
-   Several files exist to show the intended shape of the complete guide. If a section says `TODO: VALIDATE`, it is not ready to be treated as final guidance. If a milestone is listed next to that marker, treat it as planned sequencing rather than completed scope.
+   If a section marks an exact command or provider-specific detail with a TODO note, that part still needs confirmation before being treated as final guidance.
 
 5. Understand the role of this project.
 
@@ -53,7 +53,7 @@ After reading this page, you should understand that:
 - this is a beginner-first onboarding repository
 - this repository is designed as an execution-focused onboarding path, not just a reference
 - Milestone 1 is complete as the documentation foundation
-- Milestone 2 has started with the first CKB-specific overview, node setup, RPC basics, and local verification guidance
+- Milestone 2 is complete as the CKB-specific onboarding documentation layer
 - later sections outside that scope still need validation before they become full instructions
 
 ## Common Issues
@@ -72,4 +72,4 @@ The main problem is usually not the absence of commands. It is missing prerequis
 
 ### Assuming "Accessible" Means "Validated"
 
-A document may exist in the repository before it is fully complete. Use the validation notes and `TODO: VALIDATE` markers to tell the difference, and use any milestone note next to the marker as a scope signal.
+A document may exist in the repository before every exact detail is fully validated. Use the validation notes and TODO markers to tell the difference.

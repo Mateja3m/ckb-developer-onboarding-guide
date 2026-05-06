@@ -12,7 +12,7 @@ Before using this page, complete:
 - [01. Prerequisites](01-prerequisites.md)
 - [02. Environment Setup](02-environment-setup.md)
 
-This page begins the first Milestone 2 shift from generic onboarding foundations into CKB-specific onboarding context.
+This page is where the guide moves from generic onboarding foundations into CKB-specific onboarding context.
 
 ## What CKB Is
 
@@ -73,7 +73,7 @@ At this stage, the guide covers:
 - the CKB-specific concepts a beginner needs before deeper setup
 - how to think about local node setup versus RPC-only access
 - a first validated local node and RPC path already recorded in this repository
-- a beginner checklist for verifying whether the environment is ready
+- the role of indexer, workflow, troubleshooting, and support material in the broader onboarding path
 
 ## What This Guide Does Not Cover Yet
 
@@ -81,9 +81,9 @@ This guide does not yet provide complete instructions for:
 
 - advanced node operations
 - production deployment
-- indexer setup
 - contract development workflows
 - a fully validated public RPC provider comparison
+- every exact indexer installation or hosted provider command a beginner might choose later
 
 Where the repository does not already contain validated evidence for an exact command or path, the later documents use `TODO: verify against official CKB documentation before finalizing.`
 
@@ -93,7 +93,9 @@ Continue in this order:
 
 1. [04. CKB Node Setup](04-ckb-node-setup.md) if you want the local-node path.
 2. [05. RPC Basics](05-rpc-setup.md) to understand the first RPC checks and what success means.
-3. [07. Configuration Setup](07-configuration-setup.md) to understand the minimal configuration details already validated in this repository.
+3. [06. Indexer Setup](06-indexer-setup.md) to understand when an indexer belongs in the onboarding flow.
+4. [07. Configuration Setup](07-configuration-setup.md) to understand the minimal configuration details already validated in this repository.
+5. [08. First Developer Workflow](08-first-developer-workflow.md) to see the smallest repeatable happy path through the current guide.
 
 ## Verification
 

@@ -49,7 +49,10 @@ Public or shared RPC usually means:
 - you may be able to read data without running local infrastructure
 - you have less visibility into the underlying process and local configuration
 
-This repository currently validates the local path. It does not yet publish a validated public RPC provider flow.
+This repository now validates both:
+
+- a local RPC onboarding path through the repository's local node flow
+- a public testnet RPC onboarding path using a shared CKB testnet endpoint
 
 ## Basic Health-Check Concept
 
@@ -79,9 +82,29 @@ http://localhost:8114
 
 The repository validation notes also recorded the same JSON-RPC POST request succeeding against `http://127.0.0.1:28114` on the validation machine. The guide still treats `http://localhost:8114` as the primary example because that request already existed in the earlier repo flow and is easier to keep consistent.
 
-If you want to document a public or shared RPC example later:
+## Repository-Validated Public Testnet Example
 
-- `TODO: verify against official CKB documentation before finalizing.` Exact endpoint format and request example for a public RPC onboarding path.
+The same health-check request was also validated against a public CKB testnet RPC endpoint.
+
+Run:
+
+```bash
+echo '{
+    "id": 2,
+    "jsonrpc": "2.0",
+    "method": "get_tip_block_number",
+    "params": []
+}' \
+| tr -d '\n' \
+| curl -H 'content-type: application/json' -d @- \
+https://testnet.ckb.dev/rpc
+```
+
+What success looks like:
+
+- the endpoint returns valid JSON-RPC output
+- the response includes `"jsonrpc":"2.0"` and a `"result"` field
+- the exact tip block number can vary from one request to the next
 
 ## What A Successful Response Means
 
@@ -149,6 +172,7 @@ You are ready to continue if:
 - you can explain what RPC is in plain language
 - you understand why a valid JSON response counts as an early success signal
 - you can describe the difference between local RPC and public RPC
+- you can recognize that the same health-check pattern can work against either a validated local endpoint or a validated shared testnet endpoint
 - you know that a low block number is not, by itself, a failure
 
 ## Expected Output
@@ -156,7 +180,7 @@ You are ready to continue if:
 At the end of this page, you should have:
 
 - one clear mental model for what the RPC layer does
-- one validated local health-check request if you followed the repository's local path
+- one validated health-check request, either against the local path or the shared testnet path documented here
 - a short explanation of what success and failure usually mean
 
 ## Common Issues

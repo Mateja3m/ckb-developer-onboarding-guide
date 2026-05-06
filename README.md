@@ -19,31 +19,35 @@ This repository contains the completed Milestone 1 onboarding foundation:
 - RPC setup foundation
 - minimal configuration guidance
 
-Milestone 2 work has started with initial CKB-specific setup, RPC basics, and local verification guidance.
+This repository now also contains the completed Milestone 2 documentation layer:
 
-Later sections that go beyond the currently validated scope are still intentionally scaffolded as placeholders so the guide can expand in a structured way without pretending unfinished sections are already validated.
+- CKB-specific overview and mental model guidance
+- practical node, RPC, and indexer onboarding guidance
+- first workflow, troubleshooting, and remediation guidance
+- AI-assisted debugging and misconception guidance for early onboarding
+
+Some exact commands and provider-specific details still remain marked with TODO notes where they have not yet been validated locally.
 
 ## Requirements
 
 The current repository scope is intentionally limited to:
 
-- defining the documentation structure
-- helping a beginner understand what the guide covers
-- preparing a local development environment
-- introducing the first CKB-specific onboarding layer for node setup, RPC basics, and local verification guidance
+- providing a beginner-first onboarding path through local environment setup and first successful CKB interaction
+- documenting the core Milestone 1 and Milestone 2 onboarding concepts and workflows
+- preserving clear validation boundaries where exact commands or provider details are not yet confirmed locally
 
 This repository still does not yet document:
 
-- indexer setup details
-- troubleshooting matrix content
-- AI-assisted debugging workflows
-- advanced workflow content beyond first successful local RPC interaction
+- advanced contract development workflows
+- production deployment guidance
+- fully validated hosted provider comparisons for every later-stage service
+- deeper production operations beyond beginner onboarding
 
 This repository is being written as a validation-first guide.
 
 - Commands are included only when they are standard and low risk.
 - CKB-specific commands, outputs, and configuration details are included only where they have already been validated in this repository.
-- Any step that still requires confirmation is marked with a TODO note, and later-phase placeholders now note their target milestone inline where known.
+- Any step that still requires confirmation is marked with a TODO note.
 - Official documentation remains the source of truth for commands and technical references.
 - This repository focuses on execution flow, validation points, and early failure handling.
 
@@ -57,11 +61,18 @@ This repository is being written as a validation-first guide.
    - [CKB Overview](docs/03-quick-start.md)
    - [CKB Node Setup](docs/04-ckb-node-setup.md)
    - [RPC Basics](docs/05-rpc-setup.md)
+   - [Indexer Setup](docs/06-indexer-setup.md)
    - [Configuration Setup](docs/07-configuration-setup.md)
+   - [First Developer Workflow](docs/08-first-developer-workflow.md)
+   - [Common Errors And Remediation](docs/09-common-errors-and-remediation.md)
+   - [Troubleshooting Matrix](docs/10-troubleshooting-matrix.md)
+   - [AI-Assisted Debugging](docs/11-ai-assisted-debugging.md)
+   - [CKB Mental Model](docs/12-ckb-mental-model.md)
+   - [Common Misconceptions](docs/13-common-misconceptions.md)
 
-2. Continue into the Milestone 1 and early Milestone 2 setup path after environment readiness is confirmed.
+2. Continue through the completed Milestone 1 and Milestone 2 onboarding path after environment readiness is confirmed.
 
-   The guide now continues from the Milestone 1 foundation into the first Milestone 2 CKB-specific layer through overview, node setup, RPC basics, and minimal configuration guidance. The later placeholder files still show how the full guide will be organized, but they are not yet validated onboarding steps.
+   The guide now continues from the Milestone 1 foundation through the full Milestone 2 CKB-specific documentation layer, including indexer context, first workflow guidance, troubleshooting, AI-assisted debugging, and conceptual support material.
 
 3. Follow the repository structure when reviewing or extending the guide.
 
@@ -93,14 +104,14 @@ This repository is being written as a validation-first guide.
    - [03 CKB Overview](docs/03-quick-start.md): beginner-friendly introduction to CKB, Nervos, nodes, and RPC
    - [04 CKB Node Setup](docs/04-ckb-node-setup.md): practical local-node decision guide and validated local startup path
    - [05 RPC Basics](docs/05-rpc-setup.md): first RPC health-check concepts and response interpretation
-   - [06 Indexer Setup](docs/06-indexer-setup.md): placeholder
+   - [06 Indexer Setup](docs/06-indexer-setup.md): where the indexer fits and how to think about local versus hosted choices
    - [07 Configuration Setup](docs/07-configuration-setup.md): minimal validated configuration awareness for Milestone 1
-   - [08 First Developer Workflow](docs/08-first-developer-workflow.md): placeholder
-   - [09 Common Errors and Remediation](docs/09-common-errors-and-remediation.md): placeholder
-   - [10 Troubleshooting Matrix](docs/10-troubleshooting-matrix.md): placeholder
-   - [11 AI-Assisted Debugging](docs/11-ai-assisted-debugging.md): placeholder
-   - [12 CKB Mental Model](docs/12-ckb-mental-model.md): placeholder
-   - [13 Common Misconceptions](docs/13-common-misconceptions.md): placeholder
+   - [08 First Developer Workflow](docs/08-first-developer-workflow.md): smallest repeatable happy path from setup into confirmed chain interaction
+   - [09 Common Errors and Remediation](docs/09-common-errors-and-remediation.md): beginner-facing failures with likely causes and next actions
+   - [10 Troubleshooting Matrix](docs/10-troubleshooting-matrix.md): fast symptom-to-check-to-action lookup
+   - [11 AI-Assisted Debugging](docs/11-ai-assisted-debugging.md): safe, validation-first use of AI during onboarding
+   - [12 CKB Mental Model](docs/12-ckb-mental-model.md): simple relationships between node, RPC, indexer, devnet, and onboarding steps
+   - [13 Common Misconceptions](docs/13-common-misconceptions.md): common beginner assumptions that lead to confusion
 
 ## Verification
 
@@ -109,10 +120,8 @@ You are aligned with the current repository state if you understand that:
 - this repository is a proof-of-concept for validated onboarding
 - official docs provide the reference layer, while this project focuses on execution and reliability
 - Milestone 1 is complete as the documentation foundation
-- Milestone 2 has started with initial CKB-specific overview, node setup, RPC basics, and local verification guidance
-- later files outside Milestone 1 remain placeholders by design
+- Milestone 2 is complete as the CKB-specific onboarding documentation layer
 - unresolved or untested details are marked with TODO notes
-- later placeholder sections note their intended milestone inline where the scope is already clear
 - this repository is for onboarding, not advanced CKB development
 
 ## Expected Output
@@ -127,9 +136,9 @@ After reading this file, you should know:
 
 ## Common Issues
 
-### Treating Placeholder Files as Complete Guides
+### Treating TODO Notes As Fully Validated Commands
 
-Most files in `docs/` exist to establish structure. Unless a section is fully drafted, do not assume it is ready for production use.
+Some sections now include practical guidance together with TODO notes for exact commands or provider-specific details that have not yet been validated locally. Do not treat those TODO-marked details as final commands.
 
 ### Expecting Advanced CKB Content Too Early
 
@@ -141,4 +150,4 @@ Official documentation already serves that role. This repository is intended to 
 
 ### Ignoring TODO Notes
 
-If a step or recommendation is marked with a TODO note, it still needs confirmation before being treated as final documentation. Where scope is already known, the marker may also note the intended milestone, such as `TODO: VALIDATE (Milestone 2)`.
+If a step or recommendation is marked with a TODO note, it still needs confirmation before being treated as final documentation.
