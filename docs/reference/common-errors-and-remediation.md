@@ -1,4 +1,4 @@
-# 09. Common Errors And Remediation
+# Common Errors And Remediation
 
 ## Goal
 
@@ -8,9 +8,9 @@ Document the beginner-facing onboarding failures that are most likely to appear 
 
 Before using this page, complete:
 
-- [02. Environment Setup](02-environment-setup.md)
-- [04. CKB Node Setup](04-ckb-node-setup.md)
-- [05. RPC Basics](05-rpc-setup.md)
+- [Environment Setup](environment-setup.md)
+- [CKB Node Setup](ckb-node-setup.md)
+- [RPC Basics](rpc-setup.md)
 
 This page focuses on early onboarding failures, not advanced debugging.
 

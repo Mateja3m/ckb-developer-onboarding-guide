@@ -1,4 +1,4 @@
-# 04. CKB Node Setup
+# CKB Node Setup
 
 ## Goal
 
@@ -8,9 +8,9 @@ Decide whether you need a local CKB node for early development, then follow the 
 
 Before using this page, complete:
 
-- [01. Prerequisites](01-prerequisites.md)
-- [02. Environment Setup](02-environment-setup.md)
-- [03. CKB Overview](03-quick-start.md)
+- [Prerequisites](prerequisites.md)
+- [Environment Setup](environment-setup.md)
+- [Quick Start](../quick-start.md)
 
 This page stays conservative on purpose.
 

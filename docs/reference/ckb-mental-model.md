@@ -1,4 +1,4 @@
-# 12. CKB Mental Model
+# CKB Mental Model
 
 ## Goal
 

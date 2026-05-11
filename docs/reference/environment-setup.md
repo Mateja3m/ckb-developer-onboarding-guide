@@ -1,4 +1,4 @@
-# 02. Environment Setup
+# Environment Setup
 
 ## Goal
 
@@ -6,7 +6,7 @@ Prepare a clean local workspace so later CKB-specific setup can happen in an org
 
 ## Requirements
 
-Before following this page, make sure you have completed [01. Prerequisites](01-prerequisites.md).
+Before following this page, make sure you have completed [Prerequisites](prerequisites.md).
 
 You should already have working access to:
 
@@ -83,7 +83,7 @@ This page does not install or configure a CKB node, RPC endpoint, or indexer.
 
 6. Stop here before moving into CKB-specific setup.
 
-   At this point, your local environment should be organized and ready. Continue next with [03. CKB Overview](03-quick-start.md).
+   At this point, your local environment should be organized and ready. Continue next with [Quick Start](../quick-start.md).
 
 ## Verification
 

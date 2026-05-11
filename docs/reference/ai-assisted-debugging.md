@@ -1,4 +1,4 @@
-# 11. AI-Assisted Debugging
+# AI-Assisted Debugging
 
 ## Goal
 
@@ -8,8 +8,8 @@ Help beginners use AI tools safely and effectively during CKB onboarding without
 
 Before using this page, complete:
 
-- [09. Common Errors And Remediation](09-common-errors-and-remediation.md)
-- [10. Troubleshooting Matrix](10-troubleshooting-matrix.md)
+- [Common Errors And Remediation](common-errors-and-remediation.md)
+- [Troubleshooting Matrix](../troubleshooting-matrix.md)
 
 This page is tool-agnostic by design.
 

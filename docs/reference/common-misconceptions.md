@@ -1,4 +1,4 @@
-# 13. Common Misconceptions
+# Common Misconceptions
 
 ## Goal
 

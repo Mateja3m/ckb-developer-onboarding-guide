@@ -1,4 +1,4 @@
-# 07. Configuration Setup
+# Configuration Setup
 
 ## Goal
 
@@ -8,8 +8,8 @@ Explain the minimum configuration awareness a beginner needs for Milestone 1 wit
 
 Before using this page:
 
-- complete [04. CKB Node Setup](04-ckb-node-setup.md)
-- complete [05. RPC Basics](05-rpc-setup.md)
+- complete [CKB Node Setup](ckb-node-setup.md)
+- complete [RPC Basics](rpc-setup.md)
 
 This page is intentionally conservative.
 

@@ -1,4 +1,4 @@
-# 05. RPC Basics
+# RPC Basics
 
 ## Goal
 
@@ -8,7 +8,7 @@ Understand what RPC means in CKB development, how local and public RPC access di
 
 Before using this page:
 
-- complete [03. CKB Overview](03-quick-start.md)
+- complete [Quick Start](../quick-start.md)
 - decide whether you are using the repository's local-node path or a separately verified remote endpoint
 - keep the local node running if you are following the validated local flow
 

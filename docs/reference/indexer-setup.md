@@ -1,4 +1,4 @@
-# 06. Indexer Setup
+# Indexer Setup
 
 ## Goal
 
@@ -8,9 +8,9 @@ Understand what an indexer does in CKB development, when you need one, and how t
 
 Before using this page, complete:
 
-- [03. CKB Overview](03-quick-start.md)
-- [04. CKB Node Setup](04-ckb-node-setup.md)
-- [05. RPC Basics](05-rpc-setup.md)
+- [Quick Start](../quick-start.md)
+- [CKB Node Setup](ckb-node-setup.md)
+- [RPC Basics](rpc-setup.md)
 
 This page is intentionally documentation-first.
 

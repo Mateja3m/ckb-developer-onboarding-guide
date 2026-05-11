@@ -1,4 +1,4 @@
-# 01. Prerequisites
+# Prerequisites
 
 ## Goal
 

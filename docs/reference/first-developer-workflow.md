@@ -1,4 +1,4 @@
-# 08. First Developer Workflow
+# First Developer Workflow
 
 ## Goal
 
@@ -8,12 +8,12 @@ Show one small end-to-end CKB onboarding workflow that a beginner can complete w
 
 Before using this page, complete:
 
-- [01. Prerequisites](01-prerequisites.md)
-- [02. Environment Setup](02-environment-setup.md)
-- [03. CKB Overview](03-quick-start.md)
-- [04. CKB Node Setup](04-ckb-node-setup.md)
-- [05. RPC Basics](05-rpc-setup.md)
-- [07. Configuration Setup](07-configuration-setup.md)
+- [Prerequisites](prerequisites.md)
+- [Environment Setup](environment-setup.md)
+- [Quick Start](../quick-start.md)
+- [CKB Node Setup](ckb-node-setup.md)
+- [RPC Basics](rpc-setup.md)
+- [Configuration Setup](configuration-setup.md)
 
 This workflow is intentionally narrow.
 
