@@ -18,7 +18,7 @@ Use [Path B. Local Node](branching-paths.md#path-b-local-node).
 ## Why did the RPC endpoint say `POST or OPTIONS is required`?
 
 That usually means the endpoint was opened with the wrong HTTP method.
-Return to the documented POST request in [Quick Start](quick-start.md) or [RPC Basics](reference/rpc-setup.md).
+Return to the documented POST request in [Quick Start](quick-start.md#step-2-call-public-ckb-rpc).
 
 ## Does a low block number such as `0x0` mean the step failed?
 

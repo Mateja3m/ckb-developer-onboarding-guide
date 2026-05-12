@@ -95,7 +95,7 @@ PASS:
 FAIL:
 
 - `node` fails: [Node.js missing or wrong version](troubleshooting-matrix.md#nodejs-missing-or-wrong-version)
-- another tool fails: [Common Errors](reference/common-errors-and-remediation.md)
+- another tool fails: [Troubleshooting Matrix](troubleshooting-matrix.md)
 
 Run the Path B commands from [Branching Paths](branching-paths.md#path-b-local-node).
 

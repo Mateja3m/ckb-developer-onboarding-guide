@@ -60,7 +60,7 @@ Then return to the related section and retry the documented step exactly as writ
 - Likely cause: the request used the wrong method, the JSON was malformed, or the wrong endpoint was tested.
 - Fix: copy the documented POST request exactly and retry it before changing ports or fields.
 - Verification command: `echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' | curl -H 'content-type: application/json' -d @- https://testnet.ckb.dev/rpc`
-- Related section: [RPC Notes](reference/rpc-setup.md)
+- Related section: [Quick Start](quick-start.md#step-2-call-public-ckb-rpc)
 
 ## Local node not syncing
 

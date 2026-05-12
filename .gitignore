@@ -3,4 +3,5 @@ validation-logs/*
 !validation-logs/2026-05-11-how-to-verify-rerun.md
 *.log
 .vscode/
-docs/reports/
+docs/reports/*
+docs/reference/*
