@@ -7,7 +7,8 @@ Only run the local node or indexer checks if you chose Path B or Path C.
 
 ## Where To Save Evidence
 
-Save new evidence in `validation-logs/` or in a dated setup note.
+Save local rerun notes in ignored `validation-logs/`.
+Keep reviewer-facing evidence in the tracked `docs/validation/` files below.
 
 Existing evidence is stored in:
 
