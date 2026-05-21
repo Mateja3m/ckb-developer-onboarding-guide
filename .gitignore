@@ -1,6 +1,4 @@
 .DS_Store
-validation-logs/*
 *.log
 .vscode/
 docs/reports/*
-docs/reference/*

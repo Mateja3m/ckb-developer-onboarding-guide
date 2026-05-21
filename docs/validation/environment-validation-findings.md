@@ -6,7 +6,7 @@ Summarize the first real validation pass for local environment readiness and cap
 
 ## Findings
 
-- On April 14, 2026, the local shell environment was confirmed to be the repository root at `/Users/milanmatejic/Desktop/personal/Projects/ckb-developer-onboarding-guide`.
+- On April 14, 2026, the local shell environment was confirmed to be the repository root at `$HOME/Desktop/personal/Projects/ckb-developer-onboarding-guide`.
 - The active shell was confirmed as `/bin/zsh`.
 - The machine was identified as macOS on `arm64`.
 - Core local tooling was available and responding:

@@ -21,11 +21,11 @@ Summarize the first real validation pass for initial CKB node setup and basic RP
 - The April 19, 2026 rerun of the same RPC request returned:
   - `{"jsonrpc":"2.0","result":"0x2e","id":2}`
 - On April 20, 2026, the installed CKB binary was discovered at:
-  - `/Users/milanmatejic/Library/Application Support/offckb-nodejs/bins/0.205.0/ckb`
+  - `$HOME/Library/Application Support/offckb-nodejs/bins/0.205.0/ckb`
 - Running that binary with `--version` returned:
   - `ckb 0.205.0 (b75a785 2026-03-17)`
 - Running `offckb devnet config` before the devnet config path existed returned:
-  - `Devnet config path does not exist: /Users/milanmatejic/Library/Application Support/offckb-nodejs/devnet`
+  - `Devnet config path does not exist: $HOME/Library/Application Support/offckb-nodejs/devnet`
   - `Tip: run offckb node once to initialize devnet config files first.`
 - A browser-style or GET-style access pattern produced:
   - `Used HTTP Method is not allowed. POST or OPTIONS is required`
@@ -43,11 +43,11 @@ Summarize the first real validation pass for initial CKB node setup and basic RP
   - `ckb` listening on `*:8114`
 - On April 20, 2026, `lsof -nP -iTCP:28114 -sTCP:LISTEN` showed:
   - `node` listening on `*:28114`
-- On April 20, 2026, running `offckb node -b "/Users/milanmatejic/Library/Application Support/offckb-nodejs/bins/0.205.0/ckb"` returned:
-  - `Using custom CKB binary path: "/Users/milanmatejic/Library/Application Support/offckb-nodejs/bins/0.205.0/ckb"`
+- On April 20, 2026, running `offckb node -b "$HOME/Library/Application Support/offckb-nodejs/bins/0.205.0/ckb"` returned:
+  - `Using custom CKB binary path: "$HOME/Library/Application Support/offckb-nodejs/bins/0.205.0/ckb"`
   - `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
 - On April 20, 2026, a filesystem check showed the devnet path now existed at:
-  - `/Users/milanmatejic/Library/Application Support/offckb-nodejs/devnet`
+  - `$HOME/Library/Application Support/offckb-nodejs/devnet`
   - including `ckb.toml`, `ckb-miner.toml`, and the `data` directory
 
 ## Interpretation
