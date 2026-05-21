@@ -24,7 +24,7 @@ PASS:
 
 FAIL:
 
-- use [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- use [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
 - use [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 
 Evidence:
@@ -34,6 +34,7 @@ Evidence:
 ## Path B. Local Node
 
 Use this when you need local logs and local devnet control.
+For the longer setup explanation, see [CKB Node Setup](reference/ckb-node-setup.md) and [RPC Basics](reference/rpc-setup.md).
 
 Prerequisites:
 
@@ -66,7 +67,7 @@ PASS:
 FAIL:
 
 - `offckb` fails: [offckb command missing](troubleshooting-matrix.md#offckb-command-missing)
-- local RPC fails: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- local RPC fails: [Local node process stopped](troubleshooting-matrix.md#local-node-process-stopped)
 - response is unclear: [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 
 Evidence:
@@ -76,6 +77,7 @@ Evidence:
 ## Path C. Full Local Check
 
 Use this when Path B works and you also need the local indexer health check.
+For the longer indexer explanation, see [Indexer Setup](reference/indexer-setup.md).
 
 Prerequisites:
 
@@ -97,7 +99,7 @@ PASS:
 
 FAIL:
 
-- local service unavailable: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- local service unavailable: [Local node process stopped](troubleshooting-matrix.md#local-node-process-stopped)
 - invalid response: [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 - endpoint confusion: [Wrong network or wrong endpoint](troubleshooting-matrix.md#wrong-network-or-wrong-endpoint)
 

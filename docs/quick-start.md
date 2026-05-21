@@ -3,6 +3,7 @@
 ## Goal
 
 Get one valid CKB JSON-RPC response using public RPC.
+For the longer RPC explanation, see [RPC Basics](reference/rpc-setup.md).
 
 ## Use This If
 
@@ -54,7 +55,7 @@ PASS:
 
 FAIL:
 
-- use [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- use [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
 
 ## Step 2. Call Public CKB RPC
 
@@ -80,7 +81,7 @@ PASS:
 
 FAIL:
 
-- no connection: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- no connection: [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
 - invalid response: [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 - wrong network or endpoint: [Wrong network or wrong endpoint](troubleshooting-matrix.md#wrong-network-or-wrong-endpoint)
 

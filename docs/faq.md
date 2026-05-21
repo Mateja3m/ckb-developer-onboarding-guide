@@ -24,7 +24,7 @@ Return to the documented POST request in [Quick Start](quick-start.md#step-2-cal
 
 No.
 If the response is valid JSON-RPC, the step passed.
-Use [Local node not syncing](troubleshooting-matrix.md#local-node-not-syncing) only if the local environment still looks unstable.
+Use [Low block number misread as failure](troubleshooting-matrix.md#low-block-number-misread-as-failure) first, then [Local node process stopped](troubleshooting-matrix.md#local-node-process-stopped) only if the local environment still looks unstable.
 
 ## Which local endpoint should I trust: `localhost:8114` or `127.0.0.1:28114`?
 

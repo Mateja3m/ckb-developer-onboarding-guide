@@ -15,6 +15,8 @@ Existing evidence is stored in:
 - [environment-validation-findings.md](validation/environment-validation-findings.md)
 - [ckb-node-and-rpc-validation-findings.md](validation/ckb-node-and-rpc-validation-findings.md)
 
+For independent review, use [Third-Party Reproducibility Checklist](third-party-reproducibility.md).
+
 ## Step 1. Verify Your Environment
 
 For the low-cost public RPC path, start with `curl` and HTTPS access.
@@ -39,7 +41,7 @@ PASS:
 FAIL:
 
 - `curl` fails: [curl missing](troubleshooting-matrix.md#curl-missing)
-- HTTPS fails: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- HTTPS fails: [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
 
 Evidence to record:
 
@@ -61,7 +63,7 @@ PASS:
 
 FAIL:
 
-- no response: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- no response: [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
 - wrong response shape: [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 - endpoint confusion: [Wrong network or wrong endpoint](troubleshooting-matrix.md#wrong-network-or-wrong-endpoint)
 
@@ -114,7 +116,7 @@ PASS:
 FAIL:
 
 - `offckb` fails: [offckb command missing](troubleshooting-matrix.md#offckb-command-missing)
-- local RPC fails: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- local RPC fails: [Local node process stopped](troubleshooting-matrix.md#local-node-process-stopped)
 - response is unclear: [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 
 Evidence to record:
@@ -142,7 +144,7 @@ PASS:
 
 FAIL:
 
-- local service unavailable: [RPC endpoint unreachable](troubleshooting-matrix.md#rpc-endpoint-unreachable)
+- local service unavailable: [Local node process stopped](troubleshooting-matrix.md#local-node-process-stopped)
 - invalid response: [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
 - endpoint confusion: [Wrong network or wrong endpoint](troubleshooting-matrix.md#wrong-network-or-wrong-endpoint)
 
