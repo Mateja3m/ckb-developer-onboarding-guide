@@ -1,0 +1,102 @@
+# 快速开始
+
+## 目标
+
+使用公共 RPC 获得一次有效的 CKB JSON-RPC 响应。
+更详细的 RPC 说明请看英文参考页：[RPC Basics](../reference/rpc-setup.md)。
+
+## 适用场景
+
+- 你刚开始接触 CKB
+- 你想先走成本最低的路径
+- 你暂时不想运行本地节点
+
+预计时间：10 到 15 分钟。
+
+## 前置条件
+
+公共 RPC 快速开始只需要：
+
+- 一个终端
+- `curl`
+- 可用的 HTTPS 网络访问
+
+运行：
+
+```bash
+curl --version
+```
+
+PASS：
+
+- `curl` 返回版本信息
+
+FAIL：
+
+- `curl` 失败：查看 [curl missing](troubleshooting-matrix.md#curl-missing)
+
+注意：
+
+- Path A 不需要 `node`、`npm` 或 `git`。
+- 只有当你选择 [Path B](branching-paths.md#path-b-local-node) 或 [Path C](branching-paths.md#path-c-full-local-check) 时，才需要检查 `node`、`npm` 和 `git`。
+
+## Step 1. 检查网络访问
+
+运行：
+
+```bash
+curl --head https://google.com
+```
+
+PASS：
+
+- 返回 HTTP headers
+- `HTTP/2 301` 或其他重定向也算成功
+
+FAIL：
+
+- 查看 [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
+
+## Step 2. 调用公共 CKB RPC
+
+运行：
+
+```bash
+echo '{
+    "id": 2,
+    "jsonrpc": "2.0",
+    "method": "get_tip_block_number",
+    "params": []
+}' \
+| tr -d '\n' \
+| curl -H 'content-type: application/json' -d @- \
+https://testnet.ckb.dev/rpc
+```
+
+PASS：
+
+- 响应是 JSON
+- 响应包含 `"jsonrpc":"2.0"`
+- 响应包含 `"result"`
+
+FAIL：
+
+- 无连接：查看 [Network or DNS failure](troubleshooting-matrix.md#network-or-dns-failure)
+- 响应格式不对：查看 [Invalid JSON-RPC response](troubleshooting-matrix.md#invalid-json-rpc-response)
+- 网络或端点不清楚：查看 [Wrong network or wrong endpoint](troubleshooting-matrix.md#wrong-network-or-wrong-endpoint)
+
+## Step 3. 记录证据
+
+记录：
+
+- 命令
+- 端点
+- 完整响应
+
+最终检查请使用 [如何验证](how-to-verify.md)。
+
+## 下一步
+
+- 继续使用远程 RPC：[Path A](branching-paths.md#path-a-public-rpc-only)
+- 运行本地节点：[Path B](branching-paths.md#path-b-local-node)
+- 增加本地 indexer 检查：[Path C](branching-paths.md#path-c-full-local-check)
