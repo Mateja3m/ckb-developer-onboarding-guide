@@ -12,6 +12,7 @@
 | `node` 失败 | [Node.js missing or wrong version](#nodejs-missing-or-wrong-version) | `node --version` |
 | `npm install -g @offckb/cli` 失败 | [npm global install fails](#npm-global-install-fails) | `npm --version` |
 | `curl` 失败 | [curl missing](#curl-missing) | `curl --version` |
+| PowerShell 中 `curl` 表现不同 | [Windows PowerShell curl alias or quoting issue](#windows-powershell-curl-alias-or-quoting-issue) | `curl.exe --version` |
 | hostname 或 HTTPS 失败 | [Network or DNS failure](#network-or-dns-failure) | `curl --head https://google.com` |
 | `offckb` 不可用 | [offckb command missing](#offckb-command-missing) | `offckb --help` |
 | 第一次 `offckb node` 输出看起来像错误 | [First-run binary download confusion](#first-run-binary-download-confusion) | 观察 `offckb node` 直到最终启动或退出 |
@@ -92,19 +93,28 @@ FAIL：
 症状：
 
 - `curl --version` 失败。
+- 在 Windows PowerShell 中，`curl` 的行为和文档中的 curl 命令不同。
 
 可能原因：
 
 - `curl` 未安装或当前 shell 不可见。
+- 在 Windows PowerShell 中，`curl` 可能是 PowerShell alias，而不是 `curl.exe`。
 
 修复：
 
 - 先让 `curl` 可用，再重试 HTTPS 或 RPC。
+- 在 Windows PowerShell 中，使用本指南里的 `curl.exe` 示例。
 
 验证命令：
 
 ```bash
 curl --version
+```
+
+Windows PowerShell：
+
+```powershell
+curl.exe --version
 ```
 
 预期输出：
@@ -118,6 +128,43 @@ PASS：
 FAIL：
 
 - 暂停 Quick Start；公共 RPC 路径依赖 curl
+
+## Windows PowerShell curl alias or quoting issue
+
+症状：
+
+- 同一个 RPC 命令在 Bash 或 Git Bash 中可用，但在 Windows PowerShell 中失败
+- `curl` 输出看起来像 PowerShell web request 输出，而不是 curl 输出
+- 把 Bash pipeline 复制到 PowerShell 后，JSON body 被拒绝
+
+可能原因：
+
+- Windows PowerShell 可能把 `curl` 作为 alias 处理，而不是调用 curl executable。
+- Bash 的换行和 pipe 写法不一定能直接复制到 PowerShell。
+
+修复：
+
+- 使用 `curl.exe`，不要使用 `curl`。
+- 使用 [快速开始](quick-start.md) 或 [分支路径](branching-paths.md) 中的 PowerShell 命令写法。
+
+验证命令：
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+```
+
+预期输出：
+
+- JSON 输出包含 `"jsonrpc":"2.0"` 和 `"result"`
+
+PASS：
+
+- PowerShell 命令返回有效 JSON-RPC 输出
+
+FAIL：
+
+- 先记录完整 PowerShell 错误和 shell 版本，不要马上更换端点
 
 ## Network or DNS failure
 
@@ -137,6 +184,12 @@ FAIL：
 
 ```bash
 curl --head https://google.com
+```
+
+Windows PowerShell：
+
+```powershell
+curl.exe --head https://google.com
 ```
 
 预期输出：

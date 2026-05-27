@@ -2,6 +2,10 @@
 
 完成 [快速开始](quick-start.md) 后选择一个路径。
 
+仓库维护者提供的本地节点验证来自 macOS arm64。
+如果你在其他操作系统上测试，请通过 `Cold Start Guide Test` issue 记录结果。
+本页包含 Windows PowerShell 的 RPC 命令写法，但 Windows 仍需要 community reproduction 后才算已验证。
+
 ## Path A. Public RPC Only
 
 当你想走最低成本路径时使用。
@@ -18,9 +22,22 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
 https://testnet.ckb.dev/rpc
 ```
 
+在 Windows PowerShell 中运行：
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+```
+
 PASS：
 
 - 响应包含 `"jsonrpc":"2.0"` 和 `"result"`
+
+成功输出示例：
+
+```json
+{"jsonrpc":"2.0","result":"0x123","id":2}
+```
 
 FAIL：
 
@@ -49,7 +66,11 @@ offckb --help
 offckb node
 ```
 
+在 Windows PowerShell 中运行相同的安装和启动命令。
+如果安装后 `offckb` 还不能识别，请重新打开 PowerShell，再运行 `offckb --help`。
+
 保持 `offckb node` 运行。
+如果启动输出很长或看起来像错误，请先参考英文页 [Read OffCKB Startup Output](../how-to/read-offckb-startup-output.md)。
 在另一个终端运行：
 
 ```bash
@@ -58,11 +79,30 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
 http://localhost:8114
 ```
 
+在 Windows PowerShell 中运行：
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+```
+
 PASS：
 
 - `offckb --help` 可用
 - `offckb node` 输出 `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
 - 本地 RPC 返回 `"jsonrpc":"2.0"` 和 `"result"`
+
+成功启动行示例：
+
+```text
+CKB devnet RPC Proxy server running on http://127.0.0.1:28114
+```
+
+本地 RPC 成功输出示例：
+
+```json
+{"jsonrpc":"2.0","result":"0x0","id":2}
+```
 
 FAIL：
 
@@ -92,11 +132,24 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}' \
 http://localhost:8114
 ```
 
+在 Windows PowerShell 中运行：
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}'
+curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+```
+
 PASS：
 
 - 响应包含 `result` 对象
 - `result` 包含 `block_hash`
 - `result` 包含 `block_number`
+
+成功输出结构示例：
+
+```json
+{"jsonrpc":"2.0","result":{"block_hash":"0x...","block_number":"0x..."},"id":2}
+```
 
 FAIL：
 

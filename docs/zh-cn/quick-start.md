@@ -5,13 +5,18 @@
 使用公共 RPC 获得一次有效的 CKB JSON-RPC 响应。
 更详细的 RPC 说明请看英文参考页：[RPC Basics](../reference/rpc-setup.md)。
 
+仓库维护者提供的验证日志来自 macOS arm64。
+如果你在其他操作系统上测试，请通过 `Cold Start Guide Test` issue 记录结果。
+在 Windows PowerShell 中，请使用 `curl.exe` 示例，避免 PowerShell 把 `curl` 当作 alias 处理。
+
 ## 适用场景
 
 - 你刚开始接触 CKB
 - 你想先走成本最低的路径
 - 你暂时不想运行本地节点
 
-预计时间：10 到 15 分钟。
+目标时间：公共 RPC 路径 10 到 15 分钟。
+如果你在测试本指南，请记录实际用时。
 
 ## 前置条件
 
@@ -27,9 +32,21 @@
 curl --version
 ```
 
+在 Windows PowerShell 中运行：
+
+```powershell
+curl.exe --version
+```
+
 PASS：
 
 - `curl` 返回版本信息
+
+成功输出示例：
+
+```text
+curl 8.x.x
+```
 
 FAIL：
 
@@ -48,10 +65,22 @@ FAIL：
 curl --head https://google.com
 ```
 
+在 Windows PowerShell 中运行：
+
+```powershell
+curl.exe --head https://google.com
+```
+
 PASS：
 
 - 返回 HTTP headers
 - `HTTP/2 301` 或其他重定向也算成功
+
+成功输出示例：
+
+```text
+HTTP/2 301
+```
 
 FAIL：
 
@@ -73,11 +102,27 @@ echo '{
 https://testnet.ckb.dev/rpc
 ```
 
+在 Windows PowerShell 中运行：
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+```
+
 PASS：
 
 - 响应是 JSON
 - 响应包含 `"jsonrpc":"2.0"`
 - 响应包含 `"result"`
+
+成功输出示例：
+
+```json
+{"jsonrpc":"2.0","result":"0x123","id":2}
+```
+
+实际的 `result` 值可以不同。
+成功信号是 JSON-RPC 结构，而不是某个固定 block number。
 
 FAIL：
 
@@ -92,6 +137,7 @@ FAIL：
 - 命令
 - 端点
 - 完整响应
+- 如果你在测试本指南，记录实际用时
 
 最终检查请使用 [如何验证](how-to-verify.md)。
 

@@ -12,6 +12,7 @@ Do not change endpoints, ports, or tools until you have matched the symptom and 
 | `node` fails | [Node.js missing or wrong version](#nodejs-missing-or-wrong-version) | `node --version` |
 | `npm install -g @offckb/cli` fails | [npm global install fails](#npm-global-install-fails) | `npm --version` |
 | `curl` fails | [curl missing](#curl-missing) | `curl --version` |
+| PowerShell `curl` behaves differently | [Windows PowerShell curl alias or quoting issue](#windows-powershell-curl-alias-or-quoting-issue) | `curl.exe --version` |
 | hostname or HTTPS fails | [Network or DNS failure](#network-or-dns-failure) | `curl --head https://google.com` |
 | `offckb` is unavailable | [offckb command missing](#offckb-command-missing) | `offckb --help` |
 | first `offckb node` output looks alarming | [First-run binary download confusion](#first-run-binary-download-confusion) | watch `offckb node` until final startup or exit |
@@ -100,19 +101,28 @@ Related section:
 Symptom:
 
 - `curl --version` fails.
+- on Windows PowerShell, `curl` does not behave like the documented curl command.
 
 Likely cause:
 
 - `curl` is not installed or not visible in the current shell.
+- on Windows PowerShell, `curl` may resolve to a PowerShell alias instead of `curl.exe`.
 
 Fix:
 
 - Make `curl` available before retrying HTTPS or RPC steps.
+- On Windows PowerShell, use `curl.exe` in this guide's RPC examples.
 
 Verification command:
 
 ```bash
 curl --version
+```
+
+Windows PowerShell:
+
+```powershell
+curl.exe --version
 ```
 
 Expected output:
@@ -130,6 +140,47 @@ FAIL:
 Related section:
 
 - [Quick Start](quick-start.md)
+
+## Windows PowerShell curl alias or quoting issue
+
+Symptom:
+
+- a documented RPC command works in Bash or Git Bash but fails in Windows PowerShell
+- `curl` output looks like PowerShell web request output instead of curl output
+- the JSON body is rejected after copying a Bash pipeline into PowerShell
+
+Likely cause:
+
+- Windows PowerShell can treat `curl` as an alias rather than the curl executable.
+- Bash line continuations and pipes do not always copy cleanly into PowerShell.
+
+Fix:
+
+- Use `curl.exe`, not `curl`.
+- Use the PowerShell command variants in [Quick Start](quick-start.md) or [Branching Paths](branching-paths.md).
+
+Verification command:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+```
+
+Expected output:
+
+- JSON output that includes `"jsonrpc":"2.0"` and `"result"`
+
+PASS:
+
+- the PowerShell command returns valid JSON-RPC output
+
+FAIL:
+
+- record the exact PowerShell error and the shell version before changing endpoints
+
+Related section:
+
+- [Quick Start](quick-start.md#step-2-call-public-ckb-rpc)
 
 ## Network or DNS failure
 
@@ -149,6 +200,12 @@ Verification command:
 
 ```bash
 curl --head https://google.com
+```
+
+Windows PowerShell:
+
+```powershell
+curl.exe --head https://google.com
 ```
 
 Expected output:
@@ -238,6 +295,7 @@ FAIL:
 Related section:
 
 - [CKB Node Setup](reference/ckb-node-setup.md#early-missing-binary-message)
+- [Read OffCKB Startup Output](how-to/read-offckb-startup-output.md)
 
 ## Warning-looking startup output
 
@@ -274,6 +332,7 @@ FAIL:
 Related section:
 
 - [Common Errors And Remediation](reference/common-errors-and-remediation.md#4-warning-looking-startup-output)
+- [Read OffCKB Startup Output](how-to/read-offckb-startup-output.md)
 
 ## Local node process stopped
 
@@ -312,6 +371,7 @@ FAIL:
 Related section:
 
 - [Path B. Local Node](branching-paths.md#path-b-local-node)
+- [Read OffCKB Startup Output](how-to/read-offckb-startup-output.md)
 
 ## RPC endpoint opened in a browser
 

@@ -2,6 +2,10 @@
 
 Choose one path after [Quick Start](quick-start.md).
 
+Current repository-maintained local-node validation was performed on macOS arm64.
+If you are using another operating system, record the result through the `Cold Start Guide Test` issue template.
+Windows PowerShell command variants are included for RPC requests, but Windows still needs community reproduction before it is treated as validated.
+
 ## Path A. Public RPC Only
 
 Use this when you want the cheapest path.
@@ -18,9 +22,22 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
 https://testnet.ckb.dev/rpc
 ```
 
+On Windows PowerShell, run:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+```
+
 PASS:
 
 - response includes `"jsonrpc":"2.0"` and `"result"`
+
+Example successful output:
+
+```json
+{"jsonrpc":"2.0","result":"0x123","id":2}
+```
 
 FAIL:
 
@@ -49,7 +66,11 @@ offckb --help
 offckb node
 ```
 
+On Windows PowerShell, run the same install and startup commands.
+If `offckb` is not recognized immediately after install, reopen PowerShell and rerun `offckb --help` before starting the node.
+
 Keep `offckb node` running.
+If the startup output is long or alarming, use [Read OffCKB Startup Output](how-to/read-offckb-startup-output.md) before deciding that the node failed.
 In another terminal, run:
 
 ```bash
@@ -58,11 +79,30 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
 http://localhost:8114
 ```
 
+On Windows PowerShell, run:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+```
+
 PASS:
 
 - `offckb --help` works
 - `offckb node` reports `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`
 - local RPC returns `"jsonrpc":"2.0"` and `"result"`
+
+Example successful startup line:
+
+```text
+CKB devnet RPC Proxy server running on http://127.0.0.1:28114
+```
+
+Example successful local RPC output:
+
+```json
+{"jsonrpc":"2.0","result":"0x0","id":2}
+```
 
 FAIL:
 
@@ -92,10 +132,23 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}' \
 http://localhost:8114
 ```
 
+On Windows PowerShell, run:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}'
+curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+```
+
 PASS:
 
 - response includes a `result` object
 - `result` includes `block_hash` and `block_number`
+
+Example successful output shape:
+
+```json
+{"jsonrpc":"2.0","result":{"block_hash":"0x...","block_number":"0x..."},"id":2}
+```
 
 FAIL:
 

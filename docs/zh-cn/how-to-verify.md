@@ -5,15 +5,20 @@
 先运行公共 RPC 检查。
 只有当你选择 Path B 或 Path C 时，才运行本地节点或 indexer 检查。
 
+仓库维护者提供的验证日志来自 macOS arm64。
+其他操作系统的结果请通过英文页 [Test The Guide](../contributing/test-the-guide.md) 记录。
+在 Windows PowerShell 中，请使用 [快速开始](quick-start.md) 和 [分支路径](branching-paths.md) 中的 `curl.exe` 命令写法。
+
 ## 证据保存位置
 
-本地复测记录保存在 `validation-logs/`。
 面向 reviewer 的证据保存在英文 `docs/validation/` 文件中。
+`validation-logs/` 只用于已经去除个人路径和用户名的可公开复现日志。
 
 已有证据：
 
 - [environment-validation-findings.md](../validation/environment-validation-findings.md)
 - [ckb-node-and-rpc-validation-findings.md](../validation/ckb-node-and-rpc-validation-findings.md)
+- [community-reproduction-results.md](../validation/community-reproduction-results.md)
 
 独立审核请使用：[Third-Party Reproducibility Checklist](../third-party-reproducibility.md)。
 
@@ -26,6 +31,13 @@
 ```bash
 curl --version
 curl --head https://google.com
+```
+
+在 Windows PowerShell 中运行：
+
+```powershell
+curl.exe --version
+curl.exe --head https://google.com
 ```
 
 预期输出：
@@ -50,6 +62,7 @@ FAIL：
 ## Step 2. 验证公共 RPC 路径
 
 运行 [快速开始](quick-start.md#step-2-调用公共-ckb-rpc) 中的公共 RPC 命令。
+如果你在 Windows PowerShell 中测试，请使用该章节里的 PowerShell 写法。
 
 预期输出：
 
@@ -101,6 +114,7 @@ FAIL：
 - 其他工具失败：查看 [故障排查矩阵](troubleshooting-matrix.md)
 
 运行 [Path B](branching-paths.md#path-b-local-node) 中的命令。
+如果你在 Windows PowerShell 中测试，请使用该章节里的本地 RPC PowerShell 写法。
 
 预期输出：
 
@@ -131,6 +145,7 @@ FAIL：
 只有当你选择 Path C 时才运行。
 
 运行 [Path C](branching-paths.md#path-c-full-local-check) 中的命令。
+如果你在 Windows PowerShell 中测试，请使用该章节里的 indexer PowerShell 写法。
 
 预期输出：
 
@@ -163,3 +178,6 @@ FAIL：
 - 如果使用 Path B 或 Path C，本地节点证据存在
 - 如果使用 Path C，本地 indexer 证据存在
 - 每条证据包含命令、端点、输出和日期
+- 已记录操作系统
+- 已记录终端 shell，尤其是 Windows 上的 PowerShell、PowerShell 7、Git Bash 或 WSL
+- 个人 home path 和用户名已经替换为 `$HOME` 和 `<local-user>`
