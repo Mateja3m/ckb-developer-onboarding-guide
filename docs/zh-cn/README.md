@@ -12,13 +12,24 @@
 4. [FAQ](faq.md)
 5. [如何验证](how-to-verify.md)
 
+## 验证范围
+
+仓库维护者提供的验证日志来自 macOS arm64。
+其他操作系统需要通过 community cold-start test 来补充验证。
+本指南已经加入 Windows PowerShell 的 RPC 命令写法，但 Windows 仍需要 cold-start 结果后才算已验证。
+
 ## Proposal 覆盖范围
 
 - [Proposal 覆盖地图](proposal-coverage.md)
 - [英文参考附录](../reference/README.md)
 - [第三方复现检查表](../third-party-reproducibility.md)
+- [Community testing guide](../contributing/test-the-guide.md)
 - [英文验证证据](../validation/)
 - [验证日志](../../validation-logs/)
+
+## Community Testing
+
+如果你是 CKB 新用户并尝试本指南，欢迎打开 `Cold Start Guide Test` issue，记录你的操作系统、尝试的路径、第一次卡住的位置以及看到的完整输出。
 
 ## 成功信号
 

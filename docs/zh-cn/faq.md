@@ -15,6 +15,11 @@
 当你需要本地控制、本地日志或可复现的 devnet 路径时再切换。
 使用 [Path B. Local Node](branching-paths.md#path-b-local-node)。
 
+## 如何判断 `offckb node` 是否真的启动？
+
+寻找 `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`。
+如果输出很长或不清楚，请参考英文页 [Read OffCKB Startup Output](../how-to/read-offckb-startup-output.md)。
+
 ## 为什么 RPC 端点返回 `POST or OPTIONS is required`？
 
 这通常表示你用错误的 HTTP 方法打开了端点。

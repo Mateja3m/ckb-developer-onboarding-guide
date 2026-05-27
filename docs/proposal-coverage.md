@@ -19,6 +19,7 @@ It exists so reviewers can verify what is in scope without using old progress re
 | Common misconceptions | [Common Misconceptions](reference/common-misconceptions.md) | Published |
 | Bilingual English and Chinese guide | [Chinese Guide](zh-cn/README.md) | Published |
 | Verification and evidence | [How to Verify](how-to-verify.md), [Validation Findings](validation/), [Validation Logs](../validation-logs/) | Published |
+| Third-party reproduction path | [Third-Party Reproducibility Checklist](third-party-reproducibility.md), [Test The Guide](contributing/test-the-guide.md), [Community Reproduction Results](validation/community-reproduction-results.md) | Prepared |
 
 ## Review Boundary
 
@@ -43,6 +44,9 @@ The guide proves that a beginner can follow a documented path to:
 - receive a valid local JSON-RPC response
 - run a basic local indexer health check
 - classify common beginner failures before guessing fixes
+
+Current repository-maintained validation was performed on macOS arm64.
+Other operating systems require community reproduction before they should be treated as validated.
 
 ## What This Guide Does Not Prove
 

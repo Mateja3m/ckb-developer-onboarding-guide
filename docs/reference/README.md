@@ -25,3 +25,14 @@ They make the proposal baseline publicly auditable without turning the beginner 
 
 If you are new to CKB, start with [Quick Start](../quick-start.md).
 Return here only when a main-path page links to one of these appendices or when a reviewer needs to inspect proposal coverage.
+
+## Documentation Shape
+
+The repository keeps the documentation types separate:
+
+- tutorial path: [Quick Start](../quick-start.md) and [Branching Paths](../branching-paths.md)
+- how-to checks: [How to Verify](../how-to-verify.md) and [Troubleshooting Matrix](../troubleshooting-matrix.md)
+- reference material: this folder
+- explanation material: mental model and misconceptions pages
+
+New beginner-facing material should improve the main path before expanding the reference set.

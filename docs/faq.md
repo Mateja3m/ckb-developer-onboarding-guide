@@ -15,6 +15,11 @@ Start with [Path A. Public RPC Only](branching-paths.md#path-a-public-rpc-only) 
 Switch when you need local control, local logs, or a reproducible devnet path.
 Use [Path B. Local Node](branching-paths.md#path-b-local-node).
 
+## How do I know whether `offckb node` actually started?
+
+Look for `CKB devnet RPC Proxy server running on http://127.0.0.1:28114`.
+If the output is long or confusing, use [Read OffCKB Startup Output](how-to/read-offckb-startup-output.md).
+
 ## Why did the RPC endpoint say `POST or OPTIONS is required`?
 
 That usually means the endpoint was opened with the wrong HTTP method.

@@ -19,6 +19,7 @@
 | Common misconceptions | [英文 Common Misconceptions](../reference/common-misconceptions.md) | 已发布 |
 | Chinese and English guide | [中文主路径](README.md) and [English main path](../quick-start.md) | 已发布 |
 | Verification and evidence | [如何验证](how-to-verify.md), [英文 validation](../validation/), [validation logs](../../validation-logs/) | 已发布 |
+| Third-party reproduction path | [Third-Party Reproducibility Checklist](../third-party-reproducibility.md), [Test The Guide](../contributing/test-the-guide.md), [Community Reproduction Results](../validation/community-reproduction-results.md) | 已准备 |
 
 ## 审核边界
 

@@ -3,6 +3,9 @@
 This checklist is for reviewers or contributors who did not write the guide.
 It turns the onboarding claim into a low-cost independent test.
 
+The repository-maintained validation logs were produced on macOS arm64.
+This checklist is how other operating systems and machines become verified.
+
 ## Reviewer Profile
 
 Use this checklist with a reviewer who has:
@@ -12,17 +15,26 @@ Use this checklist with a reviewer who has:
 - permission to install npm packages if testing the local node path
 - enough network access to reach HTTPS and npm
 
+If someone observes the test, the observer should stay silent until the reviewer stops or asks for help.
+The first stop is the guide's real edge.
+
 ## Required Result Format
 
 For each step, record:
 
 - date
 - operating system
+- terminal shell
 - command run
 - endpoint used
 - exact output or error
 - PASS or FAIL
 - link to the troubleshooting entry used after a failure
+- whether the tester needed outside help
+- actual time spent
+
+Replace personal paths with `$HOME` and usernames with `<local-user>` before publishing output.
+On Windows, record whether the reviewer used Windows PowerShell, PowerShell 7, Git Bash, or WSL.
 
 ## Path A. Public RPC Reproduction
 
@@ -31,6 +43,13 @@ Run:
 ```bash
 curl --version
 curl --head https://google.com
+```
+
+On Windows PowerShell, run:
+
+```powershell
+curl.exe --version
+curl.exe --head https://google.com
 ```
 
 Expected output:
@@ -44,6 +63,13 @@ Run:
 echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
 | curl -H 'content-type: application/json' -d @- \
 https://testnet.ckb.dev/rpc
+```
+
+On Windows PowerShell, run:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
 ```
 
 Expected output:
@@ -80,6 +106,13 @@ echo '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}' \
 http://localhost:8114
 ```
 
+On Windows PowerShell, run:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
+curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+```
+
 Expected output:
 
 - JSON output
@@ -94,6 +127,13 @@ Run this only after Path B passes.
 echo '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}' \
 | curl -H 'content-type: application/json' -d @- \
 http://localhost:8114
+```
+
+On Windows PowerShell, run:
+
+```powershell
+$body = '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}'
+curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
 ```
 
 Expected output:
