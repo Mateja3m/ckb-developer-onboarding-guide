@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-05-11
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: `docs/how-to-verify.md`
 - Source used: Current `How to Verify`, `Quick Start`, and `Branching Paths` guide flow
 - Operating system: macOS, local zsh terminal

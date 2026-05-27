@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-04-20
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: Custom binary-path startup and initialized devnet path presence
 - Source used: Milestone 1 follow-up validation commands
 - Operating system: macOS (shell prompt indicates local macOS workstation)

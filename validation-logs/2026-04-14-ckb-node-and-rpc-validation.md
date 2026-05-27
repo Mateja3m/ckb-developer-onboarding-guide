@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-04-14
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: Initial CKB node setup attempt and basic RPC interaction attempt
 - Source used: Official CKB documentation and official OffCKB flow
 - Operating system: macOS (Darwin 25.4.0, arm64)

@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-04-20
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: Environment connectivity target and config-surface behavior
 - Source used: Milestone 1 follow-up validation commands
 - Operating system: macOS (shell prompt indicates local macOS workstation)
@@ -46,7 +46,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ## Notes
 
 - Confirms the terminal can reach a normal HTTPS site and receive headers.
-- Supports replacing the earlier placeholder-domain connectivity check with a real validated target.
+- Supports replacing the earlier sample-domain connectivity check with a real validated target.
 
 ---
 

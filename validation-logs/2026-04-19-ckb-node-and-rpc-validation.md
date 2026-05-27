@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-04-19
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: Milestone 1 node and RPC rerun
 - Source used: Local Milestone 1 verification commands
 - Operating system: macOS (shell prompt indicates local macOS workstation)

@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-04-20
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: Dual-endpoint local RPC POST behavior after restart
 - Source used: Milestone 1 restart and RPC verification commands
 - Operating system: macOS (shell prompt indicates local macOS workstation)

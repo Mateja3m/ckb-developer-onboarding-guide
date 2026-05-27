@@ -3,7 +3,7 @@
 ## Metadata
 
 - Date: 2026-04-14
-- Tester: Milan Matejic
+- Tester: repository maintainer
 - Section being validated: Local environment readiness
 - Source used: Week 1 validation command pack
 - Operating system: macOS (Darwin 25.4.0, arm64)
@@ -77,7 +77,7 @@ uname -a
 ## Observed Output
 
 ```text
-Darwin Milans-MacBook-Air.local 25.4.0 Darwin Kernel Version 25.4.0: Thu Mar 19 19:33:09 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T8112 arm64
+Darwin <local-hostname> 25.4.0 Darwin Kernel Version 25.4.0: Thu Mar 19 19:33:09 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T8112 arm64
 ```
 
 ## Failure Cases
