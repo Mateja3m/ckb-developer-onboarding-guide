@@ -71,6 +71,8 @@ If `offckb` is not recognized immediately after install, reopen PowerShell and r
 
 Keep `offckb node` running.
 If the startup output is long or alarming, use [Read OffCKB Startup Output](how-to/read-offckb-startup-output.md) before deciding that the node failed.
+The OffCKB startup log advertises its proxy on `127.0.0.1:28114`, but the repository-validated beginner RPC health check still targets `http://localhost:8114`.
+For the port relationship, see [Port Confusion During Startup](reference/ckb-node-setup.md#port-confusion-during-startup).
 In another terminal, run:
 
 ```bash

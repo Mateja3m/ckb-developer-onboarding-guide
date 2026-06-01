@@ -71,6 +71,8 @@ offckb node
 
 保持 `offckb node` 运行。
 如果启动输出很长或看起来像错误，请先参考英文页 [Read OffCKB Startup Output](../how-to/read-offckb-startup-output.md)。
+OffCKB 启动日志会显示 proxy 地址 `127.0.0.1:28114`，但本仓库验证过的新手 RPC health check 仍然使用 `http://localhost:8114`。
+关于这两个端口的关系，请看英文参考页 [Port Confusion During Startup](../reference/ckb-node-setup.md#port-confusion-during-startup)。
 在另一个终端运行：
 
 ```bash
