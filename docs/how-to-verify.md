@@ -137,6 +137,8 @@ FAIL:
 
 Run the Path B commands from [Branching Paths](branching-paths.md#path-b-local-node).
 Use the PowerShell local RPC variant from that section if you are testing on Windows PowerShell.
+The OffCKB startup log advertises its proxy on `127.0.0.1:28114`, but this guide's beginner RPC health check still targets `http://localhost:8114`.
+For the port relationship, see [Port Confusion During Startup](reference/ckb-node-setup.md#port-confusion-during-startup).
 
 Expected output:
 

@@ -115,6 +115,8 @@ FAIL：
 
 运行 [Path B](branching-paths.md#path-b-local-node) 中的命令。
 如果你在 Windows PowerShell 中测试，请使用该章节里的本地 RPC PowerShell 写法。
+OffCKB 启动日志会显示 proxy 地址 `127.0.0.1:28114`，但本指南的新手 RPC health check 仍然使用 `http://localhost:8114`。
+关于这两个端口的关系，请看英文参考页 [Port Confusion During Startup](../reference/ckb-node-setup.md#port-confusion-during-startup)。
 
 预期输出：
 
