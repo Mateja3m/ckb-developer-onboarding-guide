@@ -26,7 +26,10 @@ On Windows PowerShell, run:
 
 ```powershell
 $body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
-curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+$body | curl.exe `
+  -H "content-type: application/json" `
+  --data-binary "@-" `
+  https://testnet.ckb.dev/rpc
 ```
 
 PASS:
@@ -85,7 +88,10 @@ On Windows PowerShell, run:
 
 ```powershell
 $body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
-curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+$body | curl.exe `
+  -H "content-type: application/json" `
+  --data-binary "@-" `
+  http://localhost:8114
 ```
 
 PASS:
@@ -138,7 +144,10 @@ On Windows PowerShell, run:
 
 ```powershell
 $body = '{"id":2,"jsonrpc":"2.0","method":"get_indexer_tip"}'
-curl.exe -H 'content-type: application/json' -d $body http://localhost:8114
+$body | curl.exe `
+  -H "content-type: application/json" `
+  --data-binary "@-" `
+  http://localhost:8114
 ```
 
 PASS:

@@ -136,6 +136,7 @@ FAIL：
 - 同一个 RPC 命令在 Bash 或 Git Bash 中可用，但在 Windows PowerShell 中失败
 - `curl` 输出看起来像 PowerShell web request 输出，而不是 curl 输出
 - 把 Bash pipeline 复制到 PowerShell 后，JSON body 被拒绝
+- PowerShell 发送的 JSON 格式不正确，RPC server 返回 parse error，例如 `"code":-32700`
 
 可能原因：
 
@@ -146,12 +147,16 @@ FAIL：
 
 - 使用 `curl.exe`，不要使用 `curl`。
 - 使用 [快速开始](quick-start.md) 或 [分支路径](branching-paths.md) 中的 PowerShell 命令写法。
+- 把 JSON body pipe 给 `curl.exe`，并使用 `--data-binary "@-"` 发送。
 
 验证命令：
 
 ```powershell
 $body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
-curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+$body | curl.exe `
+  -H "content-type: application/json" `
+  --data-binary "@-" `
+  https://testnet.ckb.dev/rpc
 ```
 
 预期输出：
