@@ -148,6 +148,7 @@ Symptom:
 - a documented RPC command works in Bash or Git Bash but fails in Windows PowerShell
 - `curl` output looks like PowerShell web request output instead of curl output
 - the JSON body is rejected after copying a Bash pipeline into PowerShell
+- PowerShell sends malformed JSON and the RPC server returns a parse error such as `"code":-32700`
 
 Likely cause:
 
@@ -158,12 +159,16 @@ Fix:
 
 - Use `curl.exe`, not `curl`.
 - Use the PowerShell command variants in [Quick Start](quick-start.md) or [Branching Paths](branching-paths.md).
+- Pipe the JSON body into `curl.exe` and send it with `--data-binary "@-"`.
 
 Verification command:
 
 ```powershell
 $body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
-curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+$body | curl.exe `
+  -H "content-type: application/json" `
+  --data-binary "@-" `
+  https://testnet.ckb.dev/rpc
 ```
 
 Expected output:

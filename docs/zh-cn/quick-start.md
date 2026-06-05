@@ -106,7 +106,10 @@ https://testnet.ckb.dev/rpc
 
 ```powershell
 $body = '{"id":2,"jsonrpc":"2.0","method":"get_tip_block_number","params":[]}'
-curl.exe -H 'content-type: application/json' -d $body https://testnet.ckb.dev/rpc
+$body | curl.exe `
+  -H "content-type: application/json" `
+  --data-binary "@-" `
+  https://testnet.ckb.dev/rpc
 ```
 
 PASS：
